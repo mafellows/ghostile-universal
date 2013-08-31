@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UISlider *slider;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *cameraButtonItem;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *nextButton;
+@property (strong, nonatomic) IBOutlet UILabel *textLabel;
 
 
 - (IBAction)sliderChanged:(id)sender;

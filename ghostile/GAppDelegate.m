@@ -8,6 +8,7 @@
 
 #import "GAppDelegate.h"
 #import "FirstViewController.h"
+#import "ScreenshotViewController.h"
 
 @implementation GAppDelegate
 
@@ -15,7 +16,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    FirstViewController *fvc = [[FirstViewController alloc] init]; 
+    // ScreenshotViewController *screenShotOnly = [[ScreenshotViewController alloc] init];
+    FirstViewController *fvc = [[FirstViewController alloc] init];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:fvc];
     [[self window] setRootViewController:navController];     
     self.window.backgroundColor = [UIColor whiteColor];

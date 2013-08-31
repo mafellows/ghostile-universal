@@ -8,6 +8,7 @@
 
 #import "SecondViewController.h"
 #import <Social/Social.h> 
+#import "UIColor+MLPFlatColors.h"
 
 @interface SecondViewController ()
 
@@ -20,7 +21,8 @@
 @synthesize foregroundImageView = _foregroundImageView;
 @synthesize backgroundImageView = _backgroundImageView;
 @synthesize backgroundImage = _backgroundImage; 
-@synthesize backgroundSliderValue; 
+@synthesize backgroundSliderValue;
+@synthesize textLabel; 
 
 
 
@@ -38,6 +40,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    
+    [textLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:24.0]];
+    [self checkText]; 
+    
     [[self slider] setMaximumValue:1.0];
     [[self slider] setMinimumValue:0.0];
     [[self slider] setValue:1.0];
@@ -53,10 +60,14 @@
     [swipeRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
     [self.view addGestureRecognizer:swipeRecognizer];
     
+    if ([_backgroundImageView image] == nil && [_foregroundImageView image] == nil) {
+        [_saveButton setEnabled:NO]; 
+    }
+    
     // Appearance
-    [toolbar setTintColor:[UIColor blackColor]]; 
+    [toolbar setTintColor:[UIColor flatGrayColor]];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"p5.png"]];
-    [_slider setMinimumTrackTintColor:[UIColor darkGrayColor]]; 
+    [_slider setMinimumTrackTintColor:[UIColor flatDarkBlueColor]];
     
 }
 
@@ -73,7 +84,17 @@
 
 -(void)clearImage:(id)sender
 {
-    [_foregroundImageView setImage:nil]; 
+    [_foregroundImageView setImage:nil];
+    [self checkText]; 
+}
+
+-(void)checkText
+{
+    if (!_backgroundImage && ![_foregroundImageView image]) {
+        [textLabel setText:@"Tap For Foreground Pic"];
+    } else {
+        [textLabel setText:@""];
+    }
 }
 
 -(void)swipeBack:(UISwipeGestureRecognizer *)recognizer
@@ -91,8 +112,7 @@
         [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
         [imagePicker setDelegate:self];
         [self presentViewController:imagePicker animated:YES completion:nil];
-    }
-    
+    }    
 }
 
 - (IBAction)saveButtonPressed:(id)sender {
@@ -149,8 +169,10 @@
 {
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     [[self foregroundImageView] setImage:image];
-    [self dismissViewControllerAnimated:YES completion:nil]; 
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self checkText]; 
 }
+
 
 #pragma mark - UIActionSheet
 

@@ -8,6 +8,7 @@
 
 #import "FirstViewController.h"
 #import "SecondViewController.h"
+#import "UIColor+MLPFlatColors.h"
 
 @interface FirstViewController ()
 
@@ -46,10 +47,25 @@
     [self.view addGestureRecognizer:swipeRecognizer]; 
     
     // Appearance
-    [[[self navigationController] navigationBar] setTintColor:[UIColor blackColor]];
-    [toolbar setTintColor:[UIColor blackColor]];
+    [[[self navigationController] navigationBar] setTintColor:[UIColor flatGrayColor]];
+    [toolbar setTintColor:[UIColor flatGrayColor]];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"p5.png"]];
-    [_slider setMinimumTrackTintColor:[UIColor darkGrayColor]]; 
+    [_slider setMinimumTrackTintColor:[UIColor flatDarkBlueColor]];
+    
+
+    [[self textLabel] setFont:[UIFont fontWithName:@"Avenir-Light" size:24.0]];
+    [self checkText]; 
+    
+    /*
+    // Constraints
+    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_backgroundImageView, _slider, toolbar);
+    NSArray *constraintsArray = [NSLayoutConstraint constraintsWithVisualFormat:@"|-[_slider]-[toolbar]-|"
+                                                                        options:NSLayoutFormatAlignAllBaseline
+                                                                        metrics:nil
+                                                                          views:viewsDictionary];
+    for (int i=0; i<constraintsArray.count; i++) {
+        [self.view addConstraint:constraintsArray[i]]; 
+    } */
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,7 +76,8 @@
 
 -(void)clearImage:(id)sender
 {
-    [_backgroundImageView setImage:nil]; 
+    [_backgroundImageView setImage:nil];
+    [self checkText]; 
 }
 
 -(void)swipeRecognized:(UISwipeGestureRecognizer *)recognizer
@@ -80,6 +97,16 @@
     [[self backgroundImageView] setAlpha:sliderValue]; 
 }
 
+-(void)checkText
+{
+    if ([[_backgroundImageView image] isKindOfClass:[UIImage class]]) {
+        [[self textLabel] setText:@""]; 
+    } else {
+        [[self textLabel] setText:@"Tap For Background Pic"];
+    }
+}
+
+
 - (IBAction)takePicture:(id)sender {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     
@@ -96,6 +123,7 @@
         [imagePicker setDelegate:self];
         [self presentViewController:imagePicker animated:YES completion:nil];
     }
+     [self checkText]; 
 }
 
 - (IBAction)nextButtonPressed:(id)sender {
@@ -133,7 +161,8 @@
 {
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage]; 
     [[self backgroundImageView] setImage:image];
-    [self dismissViewControllerAnimated:YES completion:nil]; 
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self checkText]; 
 }
 
 

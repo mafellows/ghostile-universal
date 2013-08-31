@@ -21,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (strong, nonatomic) IBOutlet UIImage *backgroundImage; 
 @property CGFloat backgroundSliderValue;
+@property (strong, nonatomic) IBOutlet UILabel *textLabel;
 
 - (IBAction)sliderValueChanged:(id)sender;
 - (IBAction)cameraButtonPressed:(id)sender;

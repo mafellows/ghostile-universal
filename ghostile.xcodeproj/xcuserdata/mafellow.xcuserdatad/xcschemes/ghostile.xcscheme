@@ -17,7 +17,7 @@
                BlueprintIdentifier = "8FBBF06817C83FB600489AD1"
                BuildableName = "ghostile.app"
                BlueprintName = "ghostile"
-               ReferencedContainer = "container:ghostile.xcodeproj">
+               ReferencedContainer = "container:Ghostile.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
             BlueprintIdentifier = "8FBBF06817C83FB600489AD1"
             BuildableName = "ghostile.app"
             BlueprintName = "ghostile"
-            ReferencedContainer = "container:ghostile.xcodeproj">
+            ReferencedContainer = "container:Ghostile.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -54,7 +54,7 @@
             BlueprintIdentifier = "8FBBF06817C83FB600489AD1"
             BuildableName = "ghostile.app"
             BlueprintName = "ghostile"
-            ReferencedContainer = "container:ghostile.xcodeproj">
+            ReferencedContainer = "container:Ghostile.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -72,7 +72,7 @@
             BlueprintIdentifier = "8FBBF06817C83FB600489AD1"
             BuildableName = "ghostile.app"
             BlueprintName = "ghostile"
-            ReferencedContainer = "container:ghostile.xcodeproj">
+            ReferencedContainer = "container:Ghostile.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
