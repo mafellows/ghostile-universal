@@ -330,10 +330,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ghostile/ghostile.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: michael fellows (UW63NW2D6H)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: michael fellows (D3F67U8S46)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ghostile/ghostile-Prefix.pch";
 				INFOPLIST_FILE = "ghostile/ghostile-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "97190D88-BD32-4A66-B317-F07F7A4B0F66";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9ED966B4-EE4C-408F-813C-14BF1D5E3EE5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -342,11 +346,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ghostile/ghostile.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: michael fellows (UW63NW2D6H)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: michael fellows (D3F67U8S46)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ghostile/ghostile-Prefix.pch";
 				INFOPLIST_FILE = "ghostile/ghostile-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "97190D88-BD32-4A66-B317-F07F7A4B0F66";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9ED966B4-EE4C-408F-813C-14BF1D5E3EE5";
 				WRAPPER_EXTENSION = app;
 			};
