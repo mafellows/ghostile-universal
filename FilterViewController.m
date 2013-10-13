@@ -1,19 +1,20 @@
 //
-//  ScreenshotViewController.m
-//  ghostile
+//  FilterViewController.m
+//  Ghostile
 //
-//  Created by Michael Fellows on 8/25/13.
+//  Created by Michael Fellows on 10/12/13.
 //  Copyright (c) 2013 Michael Fellows. All rights reserved.
 //
 
-#import "ScreenshotViewController.h"
-#import "UIColor+MLPFlatColors.h"
+#import "FilterViewController.h"
 
-@interface ScreenshotViewController ()
+@interface FilterViewController ()
 
 @end
 
-@implementation ScreenshotViewController
+@implementation FilterViewController
+@synthesize filterImageView = _filterImageView;
+@synthesize image = _image;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,11 +29,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self.view setBackgroundColor:[[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"p5.png"]]];
-    [[self navigationItem] setTitle:@""];
-    [toolbar setTintColor:[UIColor flatGrayColor]];
-    [[[self navigationController] navigationBar] setTintColor:[UIColor flatGrayColor]];
-        
+    _filterImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320.0, 320.0)];
+    [_filterImageView setBounds:CGRectMake(0, 0, 320.0, 320.0)];
+    [_filterImageView setImage:_image];
+    
+    
+    [self.view addSubview:_filterImageView]; 
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -10,74 +10,140 @@
 #import "SecondViewController.h"
 #import "UIColor+MLPFlatColors.h"
 
-@interface FirstViewController ()
-
+@interface FirstViewController () 
 @end
 
 @implementation FirstViewController
 @synthesize backgroundImageView = _backgroundImageView;
 @synthesize slider = _slider;
-@synthesize cameraButtonItem = _cameraButtonItem;
-@synthesize nextButton = _nextButton; 
-
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize cameraButton = _cameraButton;
+@synthesize nextButton = _nextButton;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // Configure Navigation Bar
+    UIBarButtonItem *clearButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(clearImage:)];
+    [self.navigationItem setRightBarButtonItem:clearButton];
+    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
+    [toolbar setTintColor:[UIColor blackColor]];
+
+    // Configure UITextLabel
+    [self.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:24.0]];
+    [self checkText];
     
-    [[self slider] setMaximumValue:1.0];
-    [[self slider] setMinimumValue:0.0];
-    [[self slider] setValue:1.0];
-    [[self navigationItem] setTitle:@"Background"];
+    // Add UIImageView
+    _backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320.0, 320.0)];
+    [_backgroundImageView setBounds:CGRectMake(0, 0, 320.0, 320.0)];
+    [self.view addSubview:_backgroundImageView];
     
-    UIBarButtonItem *clearButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(clearImage:)];
-    [[self navigationItem] setRightBarButtonItem:clearButton];
+    // Add button over image
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button addTarget:self action:@selector(showActionSheet:) forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"" forState:UIControlStateNormal];
+    [button setFrame:CGRectMake(0, 0, 320.0, 320.0)]; // Abstract the frame size
+    [self.view addSubview:button];
     
+    // Configure starting point for UISlider
+    CGFloat toolbarHeight = toolbar.frame.size.height;
+    CGFloat imageHeight = 320.0;
+    CGFloat offset = 44.0;
+    CGFloat viewHeight = self.view.frame.size.height;
+    CGFloat gap = viewHeight - imageHeight - toolbarHeight;
+    CGFloat startSlider = imageHeight + (gap / 2) - offset;
+    CGFloat padding = 15.0;
+    
+    // Add UISlider
+    _slider = [[UISlider alloc] initWithFrame:CGRectMake(padding, startSlider, self.view.frame.size.width - padding * 2, 60.0)];
+    [_slider setMaximumValue:1.0];
+    [_slider setMinimumValue:0.0];
+    [_slider setValue:1.0];
+    [_slider addTarget:self
+                action:@selector(sliderChanged:)
+      forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:_slider];
+    
+    // CameraButtonItem
+    [self.cameraButton setAction:@selector(showActionSheet:)];
+    
+    // Add Swipe Recognizer
     UISwipeGestureRecognizer *swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRecognized:)];
     [swipeRecognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
-    [self.view addGestureRecognizer:swipeRecognizer]; 
+    [self.view addGestureRecognizer:swipeRecognizer];
     
-    // Appearance
-    [[[self navigationController] navigationBar] setTintColor:[UIColor flatGrayColor]];
-    [toolbar setTintColor:[UIColor flatGrayColor]];
-    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"p5.png"]];
-    [_slider setMinimumTrackTintColor:[UIColor flatDarkBlueColor]];
+    // iOS 7 updates
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
     
-
-    [[self textLabel] setFont:[UIFont fontWithName:@"Avenir-Light" size:24.0]];
-    [self checkText]; 
-    
-    /*
-    // Constraints
-    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_backgroundImageView, _slider, toolbar);
-    NSArray *constraintsArray = [NSLayoutConstraint constraintsWithVisualFormat:@"|-[_slider]-[toolbar]-|"
-                                                                        options:NSLayoutFormatAlignAllBaseline
-                                                                        metrics:nil
-                                                                          views:viewsDictionary];
-    for (int i=0; i<constraintsArray.count; i++) {
-        [self.view addConstraint:constraintsArray[i]]; 
-    } */
 }
 
-- (void)didReceiveMemoryWarning
+// Hide status bar for iOS 7 devices
+-(BOOL)prefersStatusBarHidden
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return YES;
 }
 
+#pragma mark - View Methods
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationItem setTitle:@"Background"];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationItem setTitle:@""];
+}
+
+#pragma mark - Selector Metods
 -(void)clearImage:(id)sender
 {
     [_backgroundImageView setImage:nil];
-    [self checkText]; 
+    [self checkText];
+}
+
+-(void)sliderChanged:(id)sender
+{
+    CGFloat sliderValue = [_slider value];
+    [_backgroundImageView setAlpha:sliderValue];
+}
+
+-(void)checkText
+{
+    if ([[_backgroundImageView image] isKindOfClass:[UIImage class]]) {
+        [self.textLabel setText:@""];
+    } else {
+        [self.textLabel setText:@"Tap For Background Pic"];
+    }
+}
+
+-(void)showActionSheet:(id)sender
+{
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Take Photo"
+                                                                 delegate:self
+                                                        cancelButtonTitle:@"Cancel"
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:@"Take New Photo", @"Choose Existing Photo", nil];
+        
+        [actionSheet showFromBarButtonItem:_cameraButton animated:YES];
+    } else {
+        [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+        [imagePicker setDelegate:self];
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
+    [self checkText];
+}
+
+- (IBAction)nextButtonPressed:(id)sender {
+    UIImage *selectedImage = [[self backgroundImageView] image];
+    CGFloat sliderValue = [[self slider] value]; 
+    SecondViewController *svc = [[SecondViewController alloc] init];
+    // Setter methods
+    [svc setBackgroundImage:selectedImage];
+    [svc setBackgroundSliderValue:sliderValue]; 
+    
+    [[self navigationController] pushViewController:svc animated:YES]; 
 }
 
 -(void)swipeRecognized:(UISwipeGestureRecognizer *)recognizer
@@ -92,69 +158,6 @@
     [[self navigationController] pushViewController:svc animated:YES];
 }
 
-- (IBAction)sliderChanged:(id)sender {
-    CGFloat sliderValue = [[self slider] value];
-    [[self backgroundImageView] setAlpha:sliderValue]; 
-}
-
--(void)checkText
-{
-    if ([[_backgroundImageView image] isKindOfClass:[UIImage class]]) {
-        [[self textLabel] setText:@""]; 
-    } else {
-        [[self textLabel] setText:@"Tap For Background Pic"];
-    }
-}
-
-
-- (IBAction)takePicture:(id)sender {
-    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-    
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Take Photo"
-                                                                 delegate:self
-                                                        cancelButtonTitle:@"Cancel"
-                                                   destructiveButtonTitle:nil
-                                                        otherButtonTitles:@"Take New Photo", @"Choose Existing Photo", nil];
-        
-        [actionSheet showFromBarButtonItem:_cameraButtonItem animated:YES]; 
-    } else {
-        [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-        [imagePicker setDelegate:self];
-        [self presentViewController:imagePicker animated:YES completion:nil];
-    }
-     [self checkText]; 
-}
-
-- (IBAction)nextButtonPressed:(id)sender {
-    UIImage *selectedImage = [[self backgroundImageView] image];
-    CGFloat sliderValue = [[self slider] value]; 
-    SecondViewController *svc = [[SecondViewController alloc] init];
-    // Setter methods
-    [svc setBackgroundImage:selectedImage];
-    [svc setBackgroundSliderValue:sliderValue]; 
-    
-    [[self navigationController] pushViewController:svc animated:YES]; 
-}
-
-- (IBAction)takePictureButtonPressed:(id)sender {
-    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-    
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Take Photo"
-                                                                 delegate:self
-                                                        cancelButtonTitle:@"Cancel"
-                                                   destructiveButtonTitle:nil
-                                                        otherButtonTitles:@"Take New Photo", @"Choose Existing Photo", nil];
-        
-        [actionSheet showFromBarButtonItem:_cameraButtonItem animated:YES];
-    } else {
-        [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-        [imagePicker setDelegate:self];
-        [self presentViewController:imagePicker animated:YES completion:nil];
-    }
-}
-
 #pragma mark - Photo elements
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -164,7 +167,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     [self checkText]; 
 }
-
 
 #pragma mark - UIActionSheet
 
@@ -184,8 +186,4 @@
     
     [imagePicker setDelegate:self]; 
 }
-
-
-
-
 @end

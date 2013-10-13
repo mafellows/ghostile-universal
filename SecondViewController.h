@@ -10,7 +10,7 @@
 
 @interface SecondViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate> 
 {
-    CGFloat backgroundSliderValue;
+//    CGFloat backgroundSliderValue;
     IBOutlet UIToolbar *toolbar;
 }
 
@@ -23,9 +23,6 @@
 @property CGFloat backgroundSliderValue;
 @property (strong, nonatomic) IBOutlet UILabel *textLabel;
 
-- (IBAction)sliderValueChanged:(id)sender;
-- (IBAction)cameraButtonPressed:(id)sender;
 - (IBAction)saveButtonPressed:(id)sender;
-- (IBAction)takePictureButtonPressed:(id)sender;
 
 @end

@@ -8,15 +8,12 @@
 
 #import "GAppDelegate.h"
 #import "FirstViewController.h"
-#import "ScreenshotViewController.h"
 
 @implementation GAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    // ScreenshotViewController *screenShotOnly = [[ScreenshotViewController alloc] init];
     FirstViewController *fvc = [[FirstViewController alloc] init];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:fvc];
     [[self window] setRootViewController:navController];     

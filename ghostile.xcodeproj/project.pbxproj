@@ -13,8 +13,6 @@
 		8F6D67D817C95D630037F4FD /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F6D67D717C95D630037F4FD /* Social.framework */; };
 		8F6D67DB17CA5DF90037F4FD /* p5_@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F6D67D917CA5DF90037F4FD /* p5_@2X.png */; };
 		8F6D67DC17CA5DF90037F4FD /* p5.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F6D67DA17CA5DF90037F4FD /* p5.png */; };
-		8F6D67E017CAB3940037F4FD /* ScreenshotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F6D67DE17CAB3940037F4FD /* ScreenshotViewController.m */; };
-		8F6D67E117CAB3940037F4FD /* ScreenshotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F6D67DF17CAB3940037F4FD /* ScreenshotViewController.xib */; };
 		8F6D680717CDA23B0037F4FD /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F6D680617CDA23B0037F4FD /* icon.png */; };
 		8F6D680917CDA23E0037F4FD /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F6D680817CDA23E0037F4FD /* icon@2x.png */; };
 		8F6D680D17D186120037F4FD /* UIColor+MLPFlatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F6D680C17D186120037F4FD /* UIColor+MLPFlatColors.m */; };
@@ -39,9 +37,6 @@
 		8F6D67D717C95D630037F4FD /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		8F6D67D917CA5DF90037F4FD /* p5_@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p5_@2X.png"; sourceTree = "<group>"; };
 		8F6D67DA17CA5DF90037F4FD /* p5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p5.png; sourceTree = "<group>"; };
-		8F6D67DD17CAB3940037F4FD /* ScreenshotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenshotViewController.h; sourceTree = "<group>"; };
-		8F6D67DE17CAB3940037F4FD /* ScreenshotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenshotViewController.m; sourceTree = "<group>"; };
-		8F6D67DF17CAB3940037F4FD /* ScreenshotViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotViewController.xib; sourceTree = "<group>"; };
 		8F6D680617CDA23B0037F4FD /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		8F6D680817CDA23E0037F4FD /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		8F6D680B17D186120037F4FD /* UIColor+MLPFlatColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MLPFlatColors.h"; sourceTree = "<group>"; };
@@ -119,9 +114,6 @@
 				8F6D680A17D186120037F4FD /* UIColor+MLPFlatColors */,
 				8F6D680817CDA23E0037F4FD /* icon@2x.png */,
 				8F6D680617CDA23B0037F4FD /* icon.png */,
-				8F6D67DD17CAB3940037F4FD /* ScreenshotViewController.h */,
-				8F6D67DE17CAB3940037F4FD /* ScreenshotViewController.m */,
-				8F6D67DF17CAB3940037F4FD /* ScreenshotViewController.xib */,
 				8F6D67D417C868FA0037F4FD /* SecondViewController */,
 				8F6D67D317C868EC0037F4FD /* FirstViewController */,
 				8FBBF07217C83FB600489AD1 /* ghostile */,
@@ -203,6 +195,11 @@
 				CLASSPREFIX = G;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Michael Fellows";
+				TargetAttributes = {
+					8FBBF06817C83FB600489AD1 = {
+						DevelopmentTeam = UW63NW2D6H;
+					};
+				};
 			};
 			buildConfigurationList = 8FBBF06417C83FB600489AD1 /* Build configuration list for PBXProject "Ghostile" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -231,7 +228,6 @@
 				8F6D67D217C8682C0037F4FD /* SecondViewController.xib in Resources */,
 				8F6D67DB17CA5DF90037F4FD /* p5_@2X.png in Resources */,
 				8F6D67DC17CA5DF90037F4FD /* p5.png in Resources */,
-				8F6D67E117CAB3940037F4FD /* ScreenshotViewController.xib in Resources */,
 				8F6D680717CDA23B0037F4FD /* icon.png in Resources */,
 				8F6D680917CDA23E0037F4FD /* icon@2x.png in Resources */,
 				8F6D680F17D18DB70037F4FD /* Default-568h@2x.png in Resources */,
@@ -251,7 +247,6 @@
 				8FBBF07D17C83FB600489AD1 /* GAppDelegate.m in Sources */,
 				8FBBF09117C844DE00489AD1 /* FirstViewController.m in Sources */,
 				8F6D67D117C8682C0037F4FD /* SecondViewController.m in Sources */,
-				8F6D67E017CAB3940037F4FD /* ScreenshotViewController.m in Sources */,
 				8F6D680D17D186120037F4FD /* UIColor+MLPFlatColors.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,14 +325,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ghostile/ghostile.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: michael fellows (UW63NW2D6H)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: michael fellows (D3F67U8S46)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: michael fellows (D3F67U8S46)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ghostile/ghostile-Prefix.pch";
 				INFOPLIST_FILE = "ghostile/ghostile-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "97190D88-BD32-4A66-B317-F07F7A4B0F66";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9ED966B4-EE4C-408F-813C-14BF1D5E3EE5";
+				PROVISIONING_PROFILE = "864AD50B-9A53-4F26-B53A-9EC1EFB4E5A8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -346,14 +341,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ghostile/ghostile.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: michael fellows (UW63NW2D6H)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: michael fellows (D3F67U8S46)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: michael fellows (D3F67U8S46)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ghostile/ghostile-Prefix.pch";
 				INFOPLIST_FILE = "ghostile/ghostile-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "97190D88-BD32-4A66-B317-F07F7A4B0F66";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9ED966B4-EE4C-408F-813C-14BF1D5E3EE5";
+				PROVISIONING_PROFILE = "864AD50B-9A53-4F26-B53A-9EC1EFB4E5A8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

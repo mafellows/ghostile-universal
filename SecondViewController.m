@@ -10,8 +10,12 @@
 #import <Social/Social.h> 
 #import "UIColor+MLPFlatColors.h"
 
-@interface SecondViewController ()
-
+@interface SecondViewController () {
+    UIActionSheet *cameraSheet;
+    UIActionSheet *saveSheet;
+    UIActionSheet *cameraRollSheet;
+    UIImage *resultingImage;
+}
 @end
 
 @implementation SecondViewController
@@ -22,70 +26,95 @@
 @synthesize backgroundImageView = _backgroundImageView;
 @synthesize backgroundImage = _backgroundImage; 
 @synthesize backgroundSliderValue;
-@synthesize textLabel; 
-
-
-
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize textLabel;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    // Navigation Bar Appearance
+    [self.navigationItem setTitle:@"Foreground"];
     
+    UIBarButtonItem *clearButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
+                                                                                 target:self
+                                                                                 action:@selector(clearImage:)];
+    [self.navigationItem setRightBarButtonItem:clearButton];
+    [toolbar setTintColor:[UIColor blackColor]];
     
-    [textLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:24.0]];
-    [self checkText]; 
+    // Configure Text Label
+    [self.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:24.0]];
+    [self checkText];
     
-    [[self slider] setMaximumValue:1.0];
-    [[self slider] setMinimumValue:0.0];
-    [[self slider] setValue:1.0];
-    [[self navigationItem] setTitle:@"Foreground"];
+    // Add backgroundImageView
+    _backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320.0, 320.0)];
+    [_backgroundImageView setBounds:CGRectMake(0, 0, 320.0, 320.0)];
+    [_backgroundImageView setImage:_backgroundImage];
+    [_backgroundImageView setAlpha:backgroundSliderValue];
+    [self.view addSubview:_backgroundImageView];
     
-    [[self backgroundImageView] setImage:_backgroundImage];
-    [[self backgroundImageView] setAlpha:backgroundSliderValue];
+    // Add foregroundImageView;
+    _foregroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320.0, 320.0)];
+    [_foregroundImageView setBounds:CGRectMake(0, 0, 320.0, 320.0)];
+    [self.view addSubview:_foregroundImageView];
     
-    UIBarButtonItem *clearButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(clearImage:)];
-    [[self navigationItem] setRightBarButtonItem:clearButton]; 
+    // Add button over image
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button addTarget:self action:@selector(showActionSheet:) forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"" forState:UIControlStateNormal];
+    [button setFrame:CGRectMake(0, 0, 320.0, 320.0)]; // Abstract the frame size
+    [self.view addSubview:button];
     
-    UISwipeGestureRecognizer *swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeBack:)];
+    // Configure starting point for UISlider
+    CGFloat toolbarHeight = toolbar.frame.size.height;
+    CGFloat imageHeight = 320.0;
+    CGFloat offset = 44.0;
+    CGFloat viewHeight = self.view.frame.size.height;
+    CGFloat gap = viewHeight - imageHeight - toolbarHeight;
+    CGFloat startSlider = imageHeight + (gap / 2) - offset;
+    CGFloat padding = 15.0;
+    
+    // Add UISlider
+    _slider = [[UISlider alloc] initWithFrame:CGRectMake(padding, startSlider, self.view.frame.size.width - padding * 2, 60.0)];
+    [_slider addTarget:self
+                action:@selector(sliderValueChanged:)
+      forControlEvents:UIControlEventValueChanged];
+    [_slider setMaximumValue:1.0];
+    [_slider setMinimumValue:0.0];
+    [_slider setValue:1.0];
+    [self.view addSubview:_slider];
+    
+    // Add swipe recognizer
+    UISwipeGestureRecognizer *swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                          action:@selector(swipeBack:)];
     [swipeRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
     [self.view addGestureRecognizer:swipeRecognizer];
     
+    // Camera Button
+    [_cameraButton setAction:@selector(showActionSheet:)];
+    
+    // Check the status of the background image - Make this a method?
     if ([_backgroundImageView image] == nil && [_foregroundImageView image] == nil) {
         [_saveButton setEnabled:NO]; 
     }
     
-    // Appearance
-    [toolbar setTintColor:[UIColor flatGrayColor]];
-    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"p5.png"]];
-    [_slider setMinimumTrackTintColor:[UIColor flatDarkBlueColor]];
-    
+    // iOS 7 updates
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
-- (void)didReceiveMemoryWarning
+-(BOOL)prefersStatusBarHidden
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)sliderValueChanged:(id)sender {
-    CGFloat sliderValue = [[self slider] value];
-    [[self foregroundImageView] setAlpha:sliderValue]; 
+    return YES;
 }
 
 -(void)clearImage:(id)sender
 {
     [_foregroundImageView setImage:nil];
-    [self checkText]; 
+    [self checkText];
+    // Check the status of the background image - Make this a method?
+    if ([_backgroundImageView image] == nil && [_foregroundImageView image] == nil) {
+        [_saveButton setEnabled:NO];
+    }
+    
 }
 
 -(void)checkText
@@ -101,18 +130,44 @@
 {
     [[self navigationController] popViewControllerAnimated:YES];
 }
+//
+//- (IBAction)cameraButtonPressed:(id)sender {
+//    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+//    
+//    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+//        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Take Photo" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take New Photo", @"Choose Existing Photo", nil];
+//        [actionSheet showFromBarButtonItem:_cameraButton animated:YES];
+//    } else {
+//        [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+//        [imagePicker setDelegate:self];
+//        [self presentViewController:imagePicker animated:YES completion:nil];
+//    }    
+//}
 
-- (IBAction)cameraButtonPressed:(id)sender {
+#pragma mark - Selector methods
+-(void)showActionSheet:(id)sender
+{
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-    
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Take Photo" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take New Photo", @"Choose Existing Photo", nil];
-        [actionSheet showFromBarButtonItem:_cameraButton animated:YES];
+        cameraSheet = [[UIActionSheet alloc] initWithTitle:@"Take Photo"
+                                                                 delegate:self
+                                                        cancelButtonTitle:@"Cancel"
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:@"Take New Photo", @"Choose Existing Photo", nil];
+        
+        [cameraSheet showFromBarButtonItem:_cameraButton animated:YES];
     } else {
         [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
         [imagePicker setDelegate:self];
         [self presentViewController:imagePicker animated:YES completion:nil];
-    }    
+    }
+    [self checkText];
+}
+
+-(void)sliderValueChanged:(id)sender
+{
+    CGFloat sliderValue = [_slider value];
+    [_foregroundImageView setAlpha:sliderValue];
 }
 
 - (IBAction)saveButtonPressed:(id)sender {
@@ -122,30 +177,26 @@
     CGFloat backgroundAlpha = [self backgroundSliderValue];
     CGFloat foregroundAlpha = [[self slider] value];
     
-    NSLog(@"Slider value: %f", foregroundAlpha);
-    
-    
+    // Get the image
     UIGraphicsBeginImageContext(CGSizeMake(width, height));
     [[[self backgroundImageView] image] drawInRect:CGRectMake(0.0, 0.0, width, height) blendMode:kCGBlendModeNormal alpha:backgroundAlpha];
     [[[self foregroundImageView] image] drawInRect:CGRectMake(0, 0, width, height) blendMode:kCGBlendModeNormal alpha:foregroundAlpha];
-    UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext(); 
+    resultingImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
     
-    UIImageWriteToSavedPhotosAlbum(resultingImage, nil, nil, nil);
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Image Saved"
-                                                    message:@"Image saved to camera roll"
-                                                   delegate:self
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil, nil];
-    
-    [alert show];
-    
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
-        SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [tweetSheet setInitialText:@"Check out my awesome ghost pick from #ghostile"];
-        [tweetSheet addImage:resultingImage];
-        [self presentViewController:tweetSheet animated:YES completion:nil] ; 
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook] && [SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
+        saveSheet = [[UIActionSheet alloc] initWithTitle:@"Share your Ghostile pic!"
+                                                delegate:self
+                                       cancelButtonTitle:@"Cancel"
+                                  destructiveButtonTitle:nil
+                                       otherButtonTitles:@"Save to Camera Roll", @"Share on Twitter", @"Share on Facebook",  nil];
+        [saveSheet showFromBarButtonItem:_cameraButton animated:YES];
+    } else {
+        cameraRollSheet = [[UIActionSheet alloc] initWithTitle:@"Share your Ghostile pic!"
+                                                delegate:self cancelButtonTitle:@"Cancel"
+                                  destructiveButtonTitle:nil
+                                       otherButtonTitles:@"Save to Camera Roll", nil];
+        [cameraRollSheet showFromBarButtonItem:_cameraButton animated:YES];
     }
 }
 
@@ -162,7 +213,6 @@
     }
 }
 
-
 #pragma mark - Photo Delegate   
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -170,7 +220,10 @@
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     [[self foregroundImageView] setImage:image];
     [self dismissViewControllerAnimated:YES completion:nil];
-    [self checkText]; 
+    [self checkText];
+    if (![_saveButton isEnabled]) {
+        [_saveButton setEnabled:YES];
+    }
 }
 
 
@@ -178,19 +231,54 @@
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-    
-    if (buttonIndex == 0) {
-        [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
-        imagePicker.allowsEditing = YES;
-        [self presentViewController:imagePicker animated:YES completion:nil];
-    } else if (buttonIndex == 1) {
-        [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-        imagePicker.allowsEditing = YES;
-        [self presentViewController:imagePicker animated:YES completion:nil];
+    if (actionSheet == cameraSheet) {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        if (buttonIndex == 0) {
+            [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
+            imagePicker.allowsEditing = YES;
+            [self presentViewController:imagePicker animated:YES completion:nil];
+        } else if (buttonIndex == 1) {
+            [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+            imagePicker.allowsEditing = YES;
+            [self presentViewController:imagePicker animated:YES completion:nil];
+        }
+        [imagePicker setDelegate:self];
     }
     
-    [imagePicker setDelegate:self];
+    if (actionSheet == cameraRollSheet) {
+        if (buttonIndex == 0) {
+            UIImageWriteToSavedPhotosAlbum(resultingImage, nil, nil, nil);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Image Saved"
+                                                            message:@"Image saved to camera roll"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil, nil];
+            [alert show];
+        }
+    }
+    
+    if (actionSheet == saveSheet) {
+        if (buttonIndex == 0) {
+            UIImageWriteToSavedPhotosAlbum(resultingImage, nil, nil, nil);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Image Saved"
+                                                            message:@"Image saved to camera roll"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil, nil];
+            [alert show];
+        } else if (buttonIndex == 1) {
+            SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+            [tweetSheet setInitialText:@"Check out my awesome ghost pick from #ghostile"];
+            [tweetSheet addImage:resultingImage];
+            [self presentViewController:tweetSheet animated:YES completion:nil];
+        } else if (buttonIndex == 2) {
+            SLComposeViewController *facebookSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+            [facebookSheet setInitialText:@"Great picture made with Ghostile!"];
+            [facebookSheet addImage:resultingImage];
+            [self presentViewController:facebookSheet animated:YES completion:nil];
+        }
+        
+    }
 }
 
 
