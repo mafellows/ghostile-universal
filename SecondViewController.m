@@ -7,6 +7,7 @@
 //
 
 #import "SecondViewController.h"
+#import "FilterViewController.h"
 #import <Social/Social.h> 
 #import "UIColor+MLPFlatColors.h"
 
@@ -130,19 +131,6 @@
 {
     [[self navigationController] popViewControllerAnimated:YES];
 }
-//
-//- (IBAction)cameraButtonPressed:(id)sender {
-//    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-//    
-//    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-//        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Take Photo" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take New Photo", @"Choose Existing Photo", nil];
-//        [actionSheet showFromBarButtonItem:_cameraButton animated:YES];
-//    } else {
-//        [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-//        [imagePicker setDelegate:self];
-//        [self presentViewController:imagePicker animated:YES completion:nil];
-//    }    
-//}
 
 #pragma mark - Selector methods
 -(void)showActionSheet:(id)sender
@@ -153,7 +141,7 @@
                                                                  delegate:self
                                                         cancelButtonTitle:@"Cancel"
                                                    destructiveButtonTitle:nil
-                                                        otherButtonTitles:@"Take New Photo", @"Choose Existing Photo", nil];
+                                                        otherButtonTitles:@"Take New Photo", @"Choose Existing Photo", @"Add Filter", nil];
         
         [cameraSheet showFromBarButtonItem:_cameraButton animated:YES];
     } else {
@@ -200,18 +188,6 @@
     }
 }
 
-- (IBAction)takePictureButtonPressed:(id)sender {
-    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-    
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Take Photo" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take New Photo", @"Choose Existing Photo", nil];
-        [actionSheet showFromBarButtonItem:_cameraButton animated:YES];
-    } else {
-        [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-        [imagePicker setDelegate:self];
-        [self presentViewController:imagePicker animated:YES completion:nil];
-    }
-}
 
 #pragma mark - Photo Delegate   
 
@@ -232,17 +208,39 @@
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (actionSheet == cameraSheet) {
-        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+
         if (buttonIndex == 0) {
+            UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
             [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
             imagePicker.allowsEditing = YES;
+            [imagePicker setDelegate:self];
             [self presentViewController:imagePicker animated:YES completion:nil];
         } else if (buttonIndex == 1) {
+            UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
             [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
             imagePicker.allowsEditing = YES;
+            [imagePicker setDelegate:self];
             [self presentViewController:imagePicker animated:YES completion:nil];
+        } else if (buttonIndex == 2) {
+            // Transition to the filter image controller
+            float width = [[self backgroundImageView] bounds].size.width;
+            float height = [[self backgroundImageView] bounds].size.height;
+            CGFloat backgroundAlpha = [self backgroundSliderValue];
+            CGFloat foregroundAlpha = [[self slider] value];
+            
+            // Get the image
+            UIGraphicsBeginImageContext(CGSizeMake(width, height));
+            [[[self backgroundImageView] image] drawInRect:CGRectMake(0.0, 0.0, width, height) blendMode:kCGBlendModeNormal alpha:backgroundAlpha];
+            [[[self foregroundImageView] image] drawInRect:CGRectMake(0, 0, width, height) blendMode:kCGBlendModeNormal alpha:foregroundAlpha];
+            resultingImage = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            
+            // Add Filter View Controller
+            FilterViewController *fvc = [[FilterViewController alloc] init];
+            [fvc setImage:resultingImage];
+            [self presentViewController:fvc animated:YES completion:nil];
         }
-        [imagePicker setDelegate:self];
+
     }
     
     if (actionSheet == cameraRollSheet) {
@@ -280,7 +278,4 @@
         
     }
 }
-
-
-
 @end

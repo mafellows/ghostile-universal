@@ -1,8 +1,8 @@
 //
 //  FilterViewController.m
-//  Ghostile
+//  ghostile
 //
-//  Created by Michael Fellows on 10/12/13.
+//  Created by Michael Fellows on 10/13/13.
 //  Copyright (c) 2013 Michael Fellows. All rights reserved.
 //
 
@@ -13,35 +13,31 @@
 @end
 
 @implementation FilterViewController
-@synthesize filterImageView = _filterImageView;
 @synthesize image = _image;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    _filterImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320.0, 320.0)];
-    [_filterImageView setBounds:CGRectMake(0, 0, 320.0, 320.0)];
-    [_filterImageView setImage:_image];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, navigationBar.frame.size.height, 320.0, 320.0)];
+    [imageView setBounds:CGRectMake(0, 0, 320.0, 320.0)];
+    [imageView setImage:_image];
+    [self.view addSubview:imageView];
     
+    [cancelButton setAction:@selector(dismiss:)];
     
-    [self.view addSubview:_filterImageView]; 
-    
+    // iOS 7 updates
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
-- (void)didReceiveMemoryWarning
+-(BOOL)prefersStatusBarHidden
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return YES; 
 }
 
+#pragma mark - Selector methods
+-(void)dismiss:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end
