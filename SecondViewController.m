@@ -222,7 +222,7 @@
             [imagePicker setDelegate:self];
             [self presentViewController:imagePicker animated:YES completion:nil];
         } else if (buttonIndex == 2) {
-            // Transition to the filter image controller
+            // Get numbers for the image context
             float width = [[self backgroundImageView] bounds].size.width;
             float height = [[self backgroundImageView] bounds].size.height;
             CGFloat backgroundAlpha = [self backgroundSliderValue];
@@ -234,11 +234,22 @@
             [[[self foregroundImageView] image] drawInRect:CGRectMake(0, 0, width, height) blendMode:kCGBlendModeNormal alpha:foregroundAlpha];
             resultingImage = UIGraphicsGetImageFromCurrentImageContext();
             UIGraphicsEndImageContext();
+        
+            // Check if there's an image to filter!
+            if ([_backgroundImageView image] == nil && [_foregroundImageView image] == nil) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Ghostile Image"
+                                                                message:@"Take some pictures before adding filters"
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil, nil];
+                [alert show];
+            } else {
+                // Add Filter View Controller
+                FilterViewController *fvc = [[FilterViewController alloc] init];
+                [fvc setImage:resultingImage];
+                [self presentViewController:fvc animated:YES completion:nil];
+            }
             
-            // Add Filter View Controller
-            FilterViewController *fvc = [[FilterViewController alloc] init];
-            [fvc setImage:resultingImage];
-            [self presentViewController:fvc animated:YES completion:nil];
         }
 
     }

@@ -9,6 +9,7 @@
 #import "FilterViewController.h"
 #import "GPUImage.h"
 #import "UIColor+MLPFlatColors.h"
+#import <Social/Social.h>
 
 
 @interface FilterViewController () {
@@ -17,6 +18,8 @@
     GPUImagePicture *stillImageSource;
     UIImage *resultingImage;
     UIImageView *imageView;
+    UIActionSheet *saveSheet;
+    UIActionSheet *cameraRollSheet;
 }
 
 @end
@@ -27,9 +30,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     array = @[@"Swipe To Add Filter",@"Sepia",@"Vignette",@"Exposure",@"Grayscale"];
     i = 0;
+    
+    // Format navigationBar
+    [navigationBar setTintColor:[UIColor blackColor]];     
     
     imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, navigationBar.frame.size.height, 320.0, 320.0)];
     [imageView setBounds:CGRectMake(0, 0, 320.0, 320.0)];
@@ -37,6 +42,7 @@
     [self.view addSubview:imageView];
     
     [cancelButton setAction:@selector(dismiss:)];
+    [saveButton setAction:@selector(save:)];
     
     // Add Right Swipe Recognizer
     UISwipeGestureRecognizer *rightSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight:)];
@@ -49,8 +55,9 @@
     [self.view addGestureRecognizer:leftSwipe];
     
     // iOS 7 updates
-    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 
 -(BOOL)prefersStatusBarHidden
@@ -62,6 +69,34 @@
 -(void)dismiss:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)save:(id)sender
+{
+    // Get the image
+    UIGraphicsBeginImageContext(CGSizeMake(320.0, 320.0));
+    [[imageView image] drawInRect:CGRectMake(0.0, 0.0, 320.0, 320.0) blendMode:kCGBlendModeNormal alpha:1.0];
+    resultingImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook] && [SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
+        saveSheet = [[UIActionSheet alloc] initWithTitle:@"Share your Ghostile pic!"
+                                                delegate:self
+                                       cancelButtonTitle:@"Cancel"
+                                  destructiveButtonTitle:nil
+                                       otherButtonTitles:@"Save to Camera Roll", @"Share on Twitter", @"Share on Facebook",  nil];
+        [saveSheet showFromRect:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height, 320.0, 0)
+                         inView:self.view
+                       animated:YES];
+    } else {
+        cameraRollSheet = [[UIActionSheet alloc] initWithTitle:@"Share your Ghostile pic!"
+                                                      delegate:self cancelButtonTitle:@"Cancel"
+                                        destructiveButtonTitle:nil
+                                             otherButtonTitles:@"Save to Camera Roll", nil];
+        [cameraRollSheet showFromRect:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height, 320.0, 0)
+                               inView:self.view
+                             animated:YES];
+    }
 }
 
 #pragma mark - Swipe Recognizer Methods
@@ -154,12 +189,42 @@
     navigationBar.topItem.title = array[i];
 }
 
+#pragma mark - Action Sheet Delegate
 
-
-
-
-
-
-
-
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (actionSheet == cameraRollSheet) {
+        if (buttonIndex == 0) {
+            UIImageWriteToSavedPhotosAlbum(resultingImage, nil, nil, nil);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Image Saved"
+                                                            message:@"Image saved to camera roll"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil, nil];
+            [alert show];
+        }
+    }
+    
+    if (actionSheet == saveSheet) {
+        if (buttonIndex == 0) {
+            UIImageWriteToSavedPhotosAlbum(resultingImage, nil, nil, nil);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Image Saved"
+                                                            message:@"Image saved to camera roll"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil, nil];
+            [alert show];
+        } else if (buttonIndex == 1) {
+            SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+            [tweetSheet setInitialText:@"Check out my awesome ghost pick from #ghostile"];
+            [tweetSheet addImage:resultingImage];
+            [self presentViewController:tweetSheet animated:YES completion:nil];
+        } else if (buttonIndex == 2) {
+            SLComposeViewController *facebookSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+            [facebookSheet setInitialText:@"Great picture made with Ghostile!"];
+            [facebookSheet addImage:resultingImage];
+            [self presentViewController:facebookSheet animated:YES completion:nil];
+        }
+    }
+}
 @end

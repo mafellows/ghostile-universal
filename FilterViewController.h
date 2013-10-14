@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FilterViewController : UIViewController
+@interface FilterViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
 {
     IBOutlet UINavigationBar *navigationBar;
     IBOutlet UIBarButtonItem *saveButton;
