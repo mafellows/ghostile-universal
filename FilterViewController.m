@@ -7,6 +7,8 @@
 //
 
 #import "FilterViewController.h"
+#import "GPUImage.h"
+
 
 @interface FilterViewController ()
 
@@ -18,9 +20,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, navigationBar.frame.size.height, 320.0, 320.0)];
     [imageView setBounds:CGRectMake(0, 0, 320.0, 320.0)];
-    [imageView setImage:_image];
+    
+    // Set up GPUImage
+    GPUImagePicture *stillImageSource = [[GPUImagePicture alloc] initWithImage:_image];
+    GPUImageSepiaFilter *sepiaFilter = [[GPUImageSepiaFilter alloc] init];
+    [stillImageSource addTarget:sepiaFilter];
+    [stillImageSource processImage];
+    UIImage *resultingImage = [sepiaFilter imageFromCurrentlyProcessedOutput];
+    
+    [imageView setImage:resultingImage];
     [self.view addSubview:imageView];
     
     [cancelButton setAction:@selector(dismiss:)];
