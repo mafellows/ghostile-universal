@@ -67,14 +67,14 @@
     // Configure starting point for UISlider
     CGFloat toolbarHeight = toolbar.frame.size.height;
     CGFloat imageHeight = 320.0;
-    CGFloat offset = 44.0;
-    CGFloat viewHeight = self.view.frame.size.height;
+    CGFloat offset = 36.0;
+    CGFloat viewHeight = [[UIScreen mainScreen] bounds].size.height;
     CGFloat gap = viewHeight - imageHeight - toolbarHeight;
     CGFloat startSlider = imageHeight + (gap / 2) - offset;
     CGFloat padding = 15.0;
     
     // Add UISlider
-    _slider = [[UISlider alloc] initWithFrame:CGRectMake(padding, startSlider, self.view.frame.size.width - padding * 2, 60.0)];
+    _slider = [[UISlider alloc] initWithFrame:CGRectMake(padding, startSlider, self.view.frame.size.width - padding * 2, 0)];
     [_slider addTarget:self
                 action:@selector(sliderValueChanged:)
       forControlEvents:UIControlEventValueChanged];

@@ -8,6 +8,7 @@
 
 #import "FilterViewController.h"
 #import "GPUImage.h"
+#import "UIColor+MLPFlatColors.h"
 
 
 @interface FilterViewController () {
@@ -32,9 +33,6 @@
     
     imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, navigationBar.frame.size.height, 320.0, 320.0)];
     [imageView setBounds:CGRectMake(0, 0, 320.0, 320.0)];
-    
-    
-    
     [imageView setImage:_image];
     [self.view addSubview:imageView];
     
@@ -109,7 +107,7 @@
         resultingImage = [grayscaleFilter imageFromCurrentlyProcessedOutput];
         [imageView setImage:resultingImage];
     }
-    navigationBar.topItem.title = array[i]; 
+    navigationBar.topItem.title = array[i];
 }
 
 -(void)swipeLeft:(UIGestureRecognizer *)recognizer
@@ -155,7 +153,6 @@
     }
     navigationBar.topItem.title = array[i];
 }
-
 
 
 
