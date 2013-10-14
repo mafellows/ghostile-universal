@@ -156,7 +156,7 @@ float rscale, gscale, bscale;
 /*
  *	lummat -
  *		make a luminance marix
- */
+ *
 static void lummat(mat)
 float mat[4][4];
 {
@@ -187,7 +187,7 @@ float mat[4][4];
     mmat[3][3] = 1.0;
     matrixmult(mmat,mat,mat);
 }
-
+*/
 /*
  *	saturatemat -
  *		make a saturation marix
@@ -238,7 +238,7 @@ float sat;
 /*
  *	offsetmat -
  *		offset r, g, and b
- */
+ *
 static void offsetmat(mat,roffset,goffset,boffset)
 float mat[4][4];
 float roffset, goffset, boffset;
@@ -265,7 +265,7 @@ float roffset, goffset, boffset;
     mmat[3][2] = boffset;
     mmat[3][3] = 1.0;
     matrixmult(mmat,mat,mat);
-}
+} */
 
 /*
  *	xrotate -
@@ -395,39 +395,39 @@ float dx, dy;
     matrixmult(mmat,mat,mat);
 }
 
-/*
- *	simplehuerotatemat -
- *		simple hue rotation. This changes luminance
- */
-static void simplehuerotatemat(mat,rot)
-float mat[4][4];
-float rot;
-{
-    float mag;
-    float xrs, xrc;
-    float yrs, yrc;
-    float zrs, zrc;
-    
-    /* rotate the grey vector into positive Z */
-    mag = sqrt(2.0);
-    xrs = 1.0/mag;
-    xrc = 1.0/mag;
-    xrotatemat(mat,xrs,xrc);
-    
-    mag = sqrt(3.0);
-    yrs = -1.0/mag;
-    yrc = sqrt(2.0)/mag;
-    yrotatemat(mat,yrs,yrc);
-    
-    /* rotate the hue */
-    zrs = sin(rot*M_PI/180.0);
-    zrc = cos(rot*M_PI/180.0);
-    zrotatemat(mat,zrs,zrc);
-    
-    /* rotate the grey vector back into place */
-    yrotatemat(mat,-yrs,yrc);
-    xrotatemat(mat,-xrs,xrc);
-}
+///*
+// *	simplehuerotatemat -
+// *		simple hue rotation. This changes luminance
+// */
+//static void simplehuerotatemat(mat,rot)
+//float mat[4][4];
+//float rot;
+//{
+//    float mag;
+//    float xrs, xrc;
+//    float yrs, yrc;
+//    float zrs, zrc;
+//    
+//    /* rotate the grey vector into positive Z */
+//    mag = sqrt(2.0);
+//    xrs = 1.0/mag;
+//    xrc = 1.0/mag;
+//    xrotatemat(mat,xrs,xrc);
+//    
+//    mag = sqrt(3.0);
+//    yrs = -1.0/mag;
+//    yrc = sqrt(2.0)/mag;
+//    yrotatemat(mat,yrs,yrc);
+//    
+//    /* rotate the hue */
+//    zrs = sin(rot*M_PI/180.0);
+//    zrc = cos(rot*M_PI/180.0);
+//    zrotatemat(mat,zrs,zrc);
+//    
+//    /* rotate the grey vector back into place */
+//    yrotatemat(mat,-yrs,yrc);
+//    xrotatemat(mat,-xrs,xrc);
+//}
 
 /*
  *	huerotatemat -
