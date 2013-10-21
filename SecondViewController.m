@@ -234,7 +234,7 @@
             [[[self foregroundImageView] image] drawInRect:CGRectMake(0, 0, width, height) blendMode:kCGBlendModeNormal alpha:foregroundAlpha];
             resultingImage = UIGraphicsGetImageFromCurrentImageContext();
             UIGraphicsEndImageContext();
-        
+            
             // Check if there's an image to filter!
             if ([_backgroundImageView image] == nil && [_foregroundImageView image] == nil) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Ghostile Image"
