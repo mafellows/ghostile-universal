@@ -10,10 +10,13 @@
 #import "FilterViewController.h"
 #import <Social/Social.h> 
 #import "UIColor+MLPFlatColors.h"
+<<<<<<< HEAD
 #import "ADVAnimationController.h"
 #import "ZoomAnimationController.h"
 #import "NewFilterViewController.h"
 #import "DMActivityInstagram.h"
+=======
+>>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
 
 @interface SecondViewController () {
     UIActionSheet *cameraSheet;
@@ -21,7 +24,10 @@
     UIActionSheet *cameraRollSheet;
     UIImage *resultingImage;
 }
+<<<<<<< HEAD
 -(void)checkText;
+=======
+>>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
 @end
 
 @implementation SecondViewController
@@ -33,11 +39,15 @@
 @synthesize backgroundImage = _backgroundImage; 
 @synthesize backgroundSliderValue;
 @synthesize textLabel;
+<<<<<<< HEAD
 @synthesize toolbar = _toolbar; 
+=======
+>>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+<<<<<<< HEAD
     [self configureNavBar];
     [self configureToolbar];
     [self configureTextLabel];
@@ -78,6 +88,21 @@
 
 -(void)configureImageViews
 {
+=======
+    // Navigation Bar Appearance
+    [self.navigationItem setTitle:@"Foreground"];
+    
+    UIBarButtonItem *clearButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
+                                                                                 target:self
+                                                                                 action:@selector(clearImage:)];
+    [self.navigationItem setRightBarButtonItem:clearButton];
+    [toolbar setTintColor:[UIColor blackColor]];
+    
+    // Configure Text Label
+    [self.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:24.0]];
+    [self checkText];
+    
+>>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
     // Add backgroundImageView
     _backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320.0, 320.0)];
     [_backgroundImageView setBounds:CGRectMake(0, 0, 320.0, 320.0)];
@@ -89,6 +114,7 @@
     _foregroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320.0, 320.0)];
     [_foregroundImageView setBounds:CGRectMake(0, 0, 320.0, 320.0)];
     [self.view addSubview:_foregroundImageView];
+<<<<<<< HEAD
 }
 
 -(void)configureNavBar
@@ -147,10 +173,55 @@
 
 -(void)handleiOS7
 {
+=======
+    
+    // Add button over image
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button addTarget:self action:@selector(showActionSheet:) forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"" forState:UIControlStateNormal];
+    [button setFrame:CGRectMake(0, 0, 320.0, 320.0)]; // Abstract the frame size
+    [self.view addSubview:button];
+    
+    // Configure starting point for UISlider
+    CGFloat toolbarHeight = toolbar.frame.size.height;
+    CGFloat imageHeight = 320.0;
+    CGFloat offset = 36.0;
+    CGFloat viewHeight = [[UIScreen mainScreen] bounds].size.height;
+    CGFloat gap = viewHeight - imageHeight - toolbarHeight;
+    CGFloat startSlider = imageHeight + (gap / 2) - offset;
+    CGFloat padding = 15.0;
+    
+    // Add UISlider
+    _slider = [[UISlider alloc] initWithFrame:CGRectMake(padding, startSlider, self.view.frame.size.width - padding * 2, 20.0)];
+    [_slider addTarget:self
+                action:@selector(sliderValueChanged:)
+      forControlEvents:UIControlEventValueChanged];
+    [_slider setMaximumValue:1.0];
+    [_slider setMinimumValue:0.0];
+    [_slider setValue:1.0];
+    [self.view addSubview:_slider];
+    
+    // Add swipe recognizer
+    UISwipeGestureRecognizer *swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                          action:@selector(swipeBack:)];
+    [swipeRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
+    [self.view addGestureRecognizer:swipeRecognizer];
+    
+    // Camera Button
+    [_cameraButton setAction:@selector(showActionSheet:)];
+    
+    // Check the status of the background image - Make this a method?
+    if ([_backgroundImageView image] == nil && [_foregroundImageView image] == nil) {
+        [_saveButton setEnabled:NO]; 
+    }
+    
+    // iOS 7 updates
+>>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
+<<<<<<< HEAD
 #pragma mark - Convenience Methods
 
 -(BOOL)areImages
@@ -164,12 +235,26 @@
 
 #pragma mark - Selector
 
+=======
+-(BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
+>>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
 -(void)clearImage:(id)sender
 {
     [_foregroundImageView setImage:nil];
     [self checkText];
     // Check the status of the background image - Make this a method?
+<<<<<<< HEAD
     _saveButton.enabled = [self areImages];
+=======
+    if ([_backgroundImageView image] == nil && [_foregroundImageView image] == nil) {
+        [_saveButton setEnabled:NO];
+    }
+    
+>>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
 }
 
 -(void)checkText
@@ -212,6 +297,7 @@
     [_foregroundImageView setAlpha:sliderValue];
 }
 
+<<<<<<< HEAD
 - (IBAction)saveButtonPressed:(id)sender
 {
     DMActivityInstagram *activityInstagram = [[DMActivityInstagram alloc] init];
@@ -229,6 +315,38 @@
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:fvc];
     [self presentViewController:navController animated:YES completion:nil];
 }
+=======
+- (IBAction)saveButtonPressed:(id)sender {
+    
+    float width = [[self backgroundImageView] bounds].size.width;
+    float height = [[self backgroundImageView] bounds].size.height;
+    CGFloat backgroundAlpha = [self backgroundSliderValue];
+    CGFloat foregroundAlpha = [[self slider] value];
+    
+    // Get the image
+    UIGraphicsBeginImageContext(CGSizeMake(width, height));
+    [[[self backgroundImageView] image] drawInRect:CGRectMake(0.0, 0.0, width, height) blendMode:kCGBlendModeNormal alpha:backgroundAlpha];
+    [[[self foregroundImageView] image] drawInRect:CGRectMake(0, 0, width, height) blendMode:kCGBlendModeNormal alpha:foregroundAlpha];
+    resultingImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook] && [SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
+        saveSheet = [[UIActionSheet alloc] initWithTitle:@"Share your Ghostile pic!"
+                                                delegate:self
+                                       cancelButtonTitle:@"Cancel"
+                                  destructiveButtonTitle:nil
+                                       otherButtonTitles:@"Save to Camera Roll", @"Share on Twitter", @"Share on Facebook",  nil];
+        [saveSheet showFromBarButtonItem:_cameraButton animated:YES];
+    } else {
+        cameraRollSheet = [[UIActionSheet alloc] initWithTitle:@"Share your Ghostile pic!"
+                                                delegate:self cancelButtonTitle:@"Cancel"
+                                  destructiveButtonTitle:nil
+                                       otherButtonTitles:@"Save to Camera Roll", nil];
+        [cameraRollSheet showFromBarButtonItem:_cameraButton animated:YES];
+    }
+}
+
+>>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
 
 #pragma mark - Photo Delegate   
 
@@ -330,6 +448,7 @@
         
     }
 }
+<<<<<<< HEAD
 
 #pragma mark - Get current image 
 -(UIImage *)getResultingImage
@@ -369,3 +488,6 @@
 
 
 
+=======
+@end
+>>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
