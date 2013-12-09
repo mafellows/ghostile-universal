@@ -1,0 +1,692 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8F3E6D0318538EA500540C3A /* DMActivityInstagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3E6D0218538EA500540C3A /* DMActivityInstagram.m */; };
+		8F3E6D0818538EB000540C3A /* instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F3E6D0418538EB000540C3A /* instagram.png */; };
+		8F3E6D0918538EB000540C3A /* instagram@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F3E6D0518538EB000540C3A /* instagram@2x.png */; };
+		8F3E6D0A18538EB000540C3A /* instagram~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F3E6D0618538EB000540C3A /* instagram~ipad.png */; };
+		8F3E6D0B18538EB000540C3A /* instagram~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F3E6D0718538EB000540C3A /* instagram~ipad@2x.png */; };
+		8F3E6D1018538F4000540C3A /* DMResizerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3E6D0E18538F4000540C3A /* DMResizerViewController.m */; };
+		8F3E6D1118538F4000540C3A /* DMResizerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F3E6D0F18538F4000540C3A /* DMResizerViewController.xib */; };
+		8F3E6D14185390BE00540C3A /* DMColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3E6D13185390BE00540C3A /* DMColorPickerView.m */; };
+		8F6D67D117C8682C0037F4FD /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F6D67CF17C8682C0037F4FD /* SecondViewController.m */; };
+		8F6D67D217C8682C0037F4FD /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F6D67D017C8682C0037F4FD /* SecondViewController.xib */; };
+		8F6D67D617C95B0B0037F4FD /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F6D67D517C95B0B0037F4FD /* Twitter.framework */; };
+		8F6D67D817C95D630037F4FD /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F6D67D717C95D630037F4FD /* Social.framework */; };
+		8F6D680D17D186120037F4FD /* UIColor+MLPFlatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F6D680C17D186120037F4FD /* UIColor+MLPFlatColors.m */; };
+		8F79BDCD180B4AF6003D972D /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F79BDCB180B4AF6003D972D /* FilterViewController.m */; };
+		8F79BDCE180B4AF6003D972D /* FilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F79BDCC180B4AF6003D972D /* FilterViewController.xib */; };
+		8F79C09B180B756D003D972D /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F79C096180B751F003D972D /* libGPUImage.a */; };
+		8F79C09D180B7583003D972D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F79C09C180B7583003D972D /* CoreMedia.framework */; };
+		8F79C09F180B7589003D972D /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F79C09E180B7589003D972D /* CoreVideo.framework */; };
+		8F79C0A1180B758F003D972D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F79C0A0180B758F003D972D /* AVFoundation.framework */; };
+		8F79C0A3180B7594003D972D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F79C0A2180B7594003D972D /* OpenGLES.framework */; };
+		8F79C0A5180B759D003D972D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F79C0A4180B759D003D972D /* QuartzCore.framework */; };
+		8F79C0AB180BA353003D972D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F79C0A8180BA353003D972D /* Default-568h@2x.png */; };
+		8F79C0AC180BA353003D972D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F79C0A9180BA353003D972D /* Default.png */; };
+		8F79C0AD180BA353003D972D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F79C0AA180BA353003D972D /* Default@2x.png */; };
+		8F79C0B4180BA906003D972D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F79C0B3180BA906003D972D /* Images.xcassets */; };
+		8F79C114180C8227003D972D /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F79C112180C8227003D972D /* iTunesArtwork.png */; };
+		8F79C115180C8227003D972D /* iTunesArtwork@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F79C113180C8227003D972D /* iTunesArtwork@2X.png */; };
+		8F79C119180C829A003D972D /* icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F79C116180C829A003D972D /* icon-40.png */; };
+		8F79C11A180C829A003D972D /* icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F79C117180C829A003D972D /* icon-29.png */; };
+		8F79C11B180C829A003D972D /* icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F79C118180C829A003D972D /* icon-60.png */; };
+		8F79C11E180C9480003D972D /* icon-57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F79C11C180C9480003D972D /* icon-57@2x.png */; };
+		8F79C11F180C9480003D972D /* icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F79C11D180C9480003D972D /* icon-57.png */; };
+		8FB964D6183AC9FD0038955A /* Palette@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB964D4183AC9FD0038955A /* Palette@2x.png */; };
+		8FB964D7183AC9FD0038955A /* Palette.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB964D5183AC9FD0038955A /* Palette.png */; };
+		8FB96547183C0D740038955A /* DropAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB96544183C0D740038955A /* DropAnimationController.m */; };
+		8FB96548183C0D740038955A /* ZoomAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB96546183C0D740038955A /* ZoomAnimationController.m */; };
+		8FBBF06D17C83FB600489AD1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FBBF06C17C83FB600489AD1 /* UIKit.framework */; };
+		8FBBF06F17C83FB600489AD1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FBBF06E17C83FB600489AD1 /* Foundation.framework */; };
+		8FBBF07117C83FB600489AD1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FBBF07017C83FB600489AD1 /* CoreGraphics.framework */; };
+		8FBBF07717C83FB600489AD1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8FBBF07517C83FB600489AD1 /* InfoPlist.strings */; };
+		8FBBF07917C83FB600489AD1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBF07817C83FB600489AD1 /* main.m */; };
+		8FBBF07D17C83FB600489AD1 /* GAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBF07C17C83FB600489AD1 /* GAppDelegate.m */; };
+		8FBBF09117C844DE00489AD1 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBF08F17C844DE00489AD1 /* FirstViewController.m */; };
+		8FBBF09217C844DE00489AD1 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FBBF09017C844DE00489AD1 /* FirstViewController.xib */; };
+		8FFB864B184E4EBA005AC63A /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFB8649184E4EBA005AC63A /* gear.png */; };
+		8FFB864C184E4EBA005AC63A /* gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFB864A184E4EBA005AC63A /* gear@2x.png */; };
+		8FFB8652184E4F5F005AC63A /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFB8650184E4F5F005AC63A /* SettingsViewController.m */; };
+		8FFB8656184E5CDD005AC63A /* picture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFB8654184E5CDD005AC63A /* picture@2x.png */; };
+		8FFB8657184E5CDD005AC63A /* picture.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFB8655184E5CDD005AC63A /* picture.png */; };
+		8FFB868118526326005AC63A /* x-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFB867D18526326005AC63A /* x-circle.png */; };
+		8FFB868218526326005AC63A /* x-circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFB867E18526326005AC63A /* x-circle@2x.png */; };
+		8FFB868318526326005AC63A /* _Gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFB867F18526326005AC63A /* _Gear@2x.png */; };
+		8FFB868418526326005AC63A /* _Gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFB868018526326005AC63A /* _Gear.png */; };
+		8FFB86891852650A005AC63A /* next.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFB86871852650A005AC63A /* next.png */; };
+		8FFB868A1852650A005AC63A /* next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFB86881852650A005AC63A /* next@2x.png */; };
+		8FFB868F185267EF005AC63A /* NewFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFB868D185267EF005AC63A /* NewFilterViewController.m */; };
+		8FFB8690185267EF005AC63A /* NewFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FFB868E185267EF005AC63A /* NewFilterViewController.xib */; };
+		8FFB86931852684C005AC63A /* FilterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFB86921852684C005AC63A /* FilterCollectionViewCell.m */; };
+		8FFB869518526866005AC63A /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FFB869418526866005AC63A /* FilterCollectionViewCell.xib */; };
+		8FFB86991852EB41005AC63A /* FilterDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFB86981852EB41005AC63A /* FilterDetailView.m */; };
+		8FFB869B1852EB58005AC63A /* FilterDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FFB869A1852EB58005AC63A /* FilterDetailView.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8F79C095180B751F003D972D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8F79C08F180B751E003D972D /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCF1A33414DDB1EC00852800;
+			remoteInfo = GPUImage;
+		};
+		8F79C097180B751F003D972D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8F79C08F180B751E003D972D /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCF1A34414DDB1EC00852800;
+			remoteInfo = GPUImageTests;
+		};
+		8F79C099180B7552003D972D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8F79C08F180B751E003D972D /* GPUImage.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BCF1A33314DDB1EC00852800;
+			remoteInfo = GPUImage;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8F3E6D0118538EA500540C3A /* DMActivityInstagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMActivityInstagram.h; sourceTree = "<group>"; };
+		8F3E6D0218538EA500540C3A /* DMActivityInstagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMActivityInstagram.m; sourceTree = "<group>"; };
+		8F3E6D0418538EB000540C3A /* instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instagram.png; sourceTree = "<group>"; };
+		8F3E6D0518538EB000540C3A /* instagram@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagram@2x.png"; sourceTree = "<group>"; };
+		8F3E6D0618538EB000540C3A /* instagram~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagram~ipad.png"; sourceTree = "<group>"; };
+		8F3E6D0718538EB000540C3A /* instagram~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagram~ipad@2x.png"; sourceTree = "<group>"; };
+		8F3E6D0D18538F4000540C3A /* DMResizerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMResizerViewController.h; sourceTree = "<group>"; };
+		8F3E6D0E18538F4000540C3A /* DMResizerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMResizerViewController.m; sourceTree = "<group>"; };
+		8F3E6D0F18538F4000540C3A /* DMResizerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMResizerViewController.xib; sourceTree = "<group>"; };
+		8F3E6D12185390BE00540C3A /* DMColorPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMColorPickerView.h; sourceTree = "<group>"; };
+		8F3E6D13185390BE00540C3A /* DMColorPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMColorPickerView.m; sourceTree = "<group>"; };
+		8F6D67CE17C8682C0037F4FD /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		8F6D67CF17C8682C0037F4FD /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		8F6D67D017C8682C0037F4FD /* SecondViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondViewController.xib; sourceTree = "<group>"; };
+		8F6D67D517C95B0B0037F4FD /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		8F6D67D717C95D630037F4FD /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		8F6D680B17D186120037F4FD /* UIColor+MLPFlatColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MLPFlatColors.h"; sourceTree = "<group>"; };
+		8F6D680C17D186120037F4FD /* UIColor+MLPFlatColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MLPFlatColors.m"; sourceTree = "<group>"; };
+		8F6D681617D193F50037F4FD /* ghostile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ghostile.entitlements; sourceTree = "<group>"; };
+		8F79BDCA180B4AF6003D972D /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
+		8F79BDCB180B4AF6003D972D /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
+		8F79BDCC180B4AF6003D972D /* FilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
+		8F79C08F180B751E003D972D /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
+		8F79C09C180B7583003D972D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		8F79C09E180B7589003D972D /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		8F79C0A0180B758F003D972D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		8F79C0A2180B7594003D972D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		8F79C0A4180B759D003D972D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8F79C0A8180BA353003D972D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8F79C0A9180BA353003D972D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		8F79C0AA180BA353003D972D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		8F79C0B3180BA906003D972D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8F79C112180C8227003D972D /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
+		8F79C113180C8227003D972D /* iTunesArtwork@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2X.png"; sourceTree = "<group>"; };
+		8F79C116180C829A003D972D /* icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-40.png"; sourceTree = "<group>"; };
+		8F79C117180C829A003D972D /* icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-29.png"; sourceTree = "<group>"; };
+		8F79C118180C829A003D972D /* icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-60.png"; sourceTree = "<group>"; };
+		8F79C11C180C9480003D972D /* icon-57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-57@2x.png"; sourceTree = "<group>"; };
+		8F79C11D180C9480003D972D /* icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-57.png"; sourceTree = "<group>"; };
+		8FB964D4183AC9FD0038955A /* Palette@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Palette@2x.png"; sourceTree = "<group>"; };
+		8FB964D5183AC9FD0038955A /* Palette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Palette.png; sourceTree = "<group>"; };
+		8FB96542183C0D740038955A /* ADVAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADVAnimationController.h; sourceTree = "<group>"; };
+		8FB96543183C0D740038955A /* DropAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropAnimationController.h; sourceTree = "<group>"; };
+		8FB96544183C0D740038955A /* DropAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropAnimationController.m; sourceTree = "<group>"; };
+		8FB96545183C0D740038955A /* ZoomAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomAnimationController.h; sourceTree = "<group>"; };
+		8FB96546183C0D740038955A /* ZoomAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomAnimationController.m; sourceTree = "<group>"; };
+		8FBBF06917C83FB600489AD1 /* ghostile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ghostile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FBBF06C17C83FB600489AD1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8FBBF06E17C83FB600489AD1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8FBBF07017C83FB600489AD1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8FBBF07417C83FB600489AD1 /* ghostile-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ghostile-Info.plist"; sourceTree = "<group>"; };
+		8FBBF07617C83FB600489AD1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8FBBF07817C83FB600489AD1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8FBBF07A17C83FB600489AD1 /* ghostile-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ghostile-Prefix.pch"; sourceTree = "<group>"; };
+		8FBBF07B17C83FB600489AD1 /* GAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAppDelegate.h; sourceTree = "<group>"; };
+		8FBBF07C17C83FB600489AD1 /* GAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAppDelegate.m; sourceTree = "<group>"; };
+		8FBBF08E17C844DE00489AD1 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		8FBBF08F17C844DE00489AD1 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		8FBBF09017C844DE00489AD1 /* FirstViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
+		8FFB8649184E4EBA005AC63A /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
+		8FFB864A184E4EBA005AC63A /* gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@2x.png"; sourceTree = "<group>"; };
+		8FFB864F184E4F5F005AC63A /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		8FFB8650184E4F5F005AC63A /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		8FFB8654184E5CDD005AC63A /* picture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture@2x.png"; sourceTree = "<group>"; };
+		8FFB8655184E5CDD005AC63A /* picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = picture.png; sourceTree = "<group>"; };
+		8FFB867D18526326005AC63A /* x-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "x-circle.png"; sourceTree = "<group>"; };
+		8FFB867E18526326005AC63A /* x-circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "x-circle@2x.png"; sourceTree = "<group>"; };
+		8FFB867F18526326005AC63A /* _Gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "_Gear@2x.png"; sourceTree = "<group>"; };
+		8FFB868018526326005AC63A /* _Gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = _Gear.png; sourceTree = "<group>"; };
+		8FFB86871852650A005AC63A /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = next.png; sourceTree = "<group>"; };
+		8FFB86881852650A005AC63A /* next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "next@2x.png"; sourceTree = "<group>"; };
+		8FFB868C185267EF005AC63A /* NewFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewFilterViewController.h; sourceTree = "<group>"; };
+		8FFB868D185267EF005AC63A /* NewFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewFilterViewController.m; sourceTree = "<group>"; };
+		8FFB868E185267EF005AC63A /* NewFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewFilterViewController.xib; sourceTree = "<group>"; };
+		8FFB86911852684C005AC63A /* FilterCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterCollectionViewCell.h; sourceTree = "<group>"; };
+		8FFB86921852684C005AC63A /* FilterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterCollectionViewCell.m; sourceTree = "<group>"; };
+		8FFB869418526866005AC63A /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
+		8FFB86971852EB41005AC63A /* FilterDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterDetailView.h; sourceTree = "<group>"; };
+		8FFB86981852EB41005AC63A /* FilterDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterDetailView.m; sourceTree = "<group>"; };
+		8FFB869A1852EB58005AC63A /* FilterDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterDetailView.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8FBBF06617C83FB600489AD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F79C0A5180B759D003D972D /* QuartzCore.framework in Frameworks */,
+				8F79C0A3180B7594003D972D /* OpenGLES.framework in Frameworks */,
+				8F79C0A1180B758F003D972D /* AVFoundation.framework in Frameworks */,
+				8F79C09F180B7589003D972D /* CoreVideo.framework in Frameworks */,
+				8F79C09D180B7583003D972D /* CoreMedia.framework in Frameworks */,
+				8F79C09B180B756D003D972D /* libGPUImage.a in Frameworks */,
+				8F6D67D817C95D630037F4FD /* Social.framework in Frameworks */,
+				8F6D67D617C95B0B0037F4FD /* Twitter.framework in Frameworks */,
+				8FBBF06D17C83FB600489AD1 /* UIKit.framework in Frameworks */,
+				8FBBF06F17C83FB600489AD1 /* Foundation.framework in Frameworks */,
+				8FBBF07117C83FB600489AD1 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8F3E6D0C18538F2D00540C3A /* DMActivityInstagram */ = {
+			isa = PBXGroup;
+			children = (
+				8F3E6D12185390BE00540C3A /* DMColorPickerView.h */,
+				8F3E6D13185390BE00540C3A /* DMColorPickerView.m */,
+				8F3E6D0D18538F4000540C3A /* DMResizerViewController.h */,
+				8F3E6D0E18538F4000540C3A /* DMResizerViewController.m */,
+				8F3E6D0F18538F4000540C3A /* DMResizerViewController.xib */,
+				8F3E6D0118538EA500540C3A /* DMActivityInstagram.h */,
+				8F3E6D0218538EA500540C3A /* DMActivityInstagram.m */,
+			);
+			name = DMActivityInstagram;
+			sourceTree = "<group>";
+		};
+		8F6D67D317C868EC0037F4FD /* FirstViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8FBBF08E17C844DE00489AD1 /* FirstViewController.h */,
+				8FBBF08F17C844DE00489AD1 /* FirstViewController.m */,
+				8FBBF09017C844DE00489AD1 /* FirstViewController.xib */,
+			);
+			name = FirstViewController;
+			sourceTree = "<group>";
+		};
+		8F6D67D417C868FA0037F4FD /* SecondViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8F6D67CE17C8682C0037F4FD /* SecondViewController.h */,
+				8F6D67CF17C8682C0037F4FD /* SecondViewController.m */,
+				8F6D67D017C8682C0037F4FD /* SecondViewController.xib */,
+			);
+			name = SecondViewController;
+			sourceTree = "<group>";
+		};
+		8F6D680A17D186120037F4FD /* UIColor+MLPFlatColors */ = {
+			isa = PBXGroup;
+			children = (
+				8F6D680B17D186120037F4FD /* UIColor+MLPFlatColors.h */,
+				8F6D680C17D186120037F4FD /* UIColor+MLPFlatColors.m */,
+			);
+			path = "UIColor+MLPFlatColors";
+			sourceTree = "<group>";
+		};
+		8F79C090180B751E003D972D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8F79C096180B751F003D972D /* libGPUImage.a */,
+				8F79C098180B751F003D972D /* GPUImageTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8F79C0A6180BA315003D972D /* FilterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8F79BDCA180B4AF6003D972D /* FilterViewController.h */,
+				8F79BDCB180B4AF6003D972D /* FilterViewController.m */,
+				8F79BDCC180B4AF6003D972D /* FilterViewController.xib */,
+			);
+			name = FilterViewController;
+			sourceTree = "<group>";
+		};
+		8F79C0A7180BA33E003D972D /* Launch Image */ = {
+			isa = PBXGroup;
+			children = (
+				8F79C0A8180BA353003D972D /* Default-568h@2x.png */,
+				8F79C0A9180BA353003D972D /* Default.png */,
+				8F79C0AA180BA353003D972D /* Default@2x.png */,
+			);
+			name = "Launch Image";
+			sourceTree = "<group>";
+		};
+		8F79C0AE180BA35A003D972D /* App Icon */ = {
+			isa = PBXGroup;
+			children = (
+				8F79C11C180C9480003D972D /* icon-57@2x.png */,
+				8F79C11D180C9480003D972D /* icon-57.png */,
+				8F79C112180C8227003D972D /* iTunesArtwork.png */,
+				8F79C116180C829A003D972D /* icon-40.png */,
+				8F79C117180C829A003D972D /* icon-29.png */,
+				8F79C118180C829A003D972D /* icon-60.png */,
+				8F79C113180C8227003D972D /* iTunesArtwork@2X.png */,
+			);
+			name = "App Icon";
+			sourceTree = "<group>";
+		};
+		8FB964DA183ACA110038955A /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				8F3E6D0418538EB000540C3A /* instagram.png */,
+				8F3E6D0518538EB000540C3A /* instagram@2x.png */,
+				8F3E6D0618538EB000540C3A /* instagram~ipad.png */,
+				8F3E6D0718538EB000540C3A /* instagram~ipad@2x.png */,
+				8FFB86871852650A005AC63A /* next.png */,
+				8FFB86881852650A005AC63A /* next@2x.png */,
+				8FFB867D18526326005AC63A /* x-circle.png */,
+				8FFB867E18526326005AC63A /* x-circle@2x.png */,
+				8FFB867F18526326005AC63A /* _Gear@2x.png */,
+				8FFB868018526326005AC63A /* _Gear.png */,
+				8FFB8654184E5CDD005AC63A /* picture@2x.png */,
+				8FFB8655184E5CDD005AC63A /* picture.png */,
+				8FFB8649184E4EBA005AC63A /* gear.png */,
+				8FFB864A184E4EBA005AC63A /* gear@2x.png */,
+				8FB964D4183AC9FD0038955A /* Palette@2x.png */,
+				8FB964D5183AC9FD0038955A /* Palette.png */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		8FBBF06017C83FB600489AD1 = {
+			isa = PBXGroup;
+			children = (
+				8F3E6D0C18538F2D00540C3A /* DMActivityInstagram */,
+				8FFB869A1852EB58005AC63A /* FilterDetailView.xib */,
+				8FFB86971852EB41005AC63A /* FilterDetailView.h */,
+				8FFB86981852EB41005AC63A /* FilterDetailView.m */,
+				8FFB86961852EB12005AC63A /* NewFilterViewController */,
+				8FFB864F184E4F5F005AC63A /* SettingsViewController.h */,
+				8FFB8650184E4F5F005AC63A /* SettingsViewController.m */,
+				8FB96542183C0D740038955A /* ADVAnimationController.h */,
+				8FB96543183C0D740038955A /* DropAnimationController.h */,
+				8FB96544183C0D740038955A /* DropAnimationController.m */,
+				8FB96545183C0D740038955A /* ZoomAnimationController.h */,
+				8FB96546183C0D740038955A /* ZoomAnimationController.m */,
+				8FB964DA183ACA110038955A /* Assets */,
+				8F79C0AE180BA35A003D972D /* App Icon */,
+				8F79C0A7180BA33E003D972D /* Launch Image */,
+				8F6D680A17D186120037F4FD /* UIColor+MLPFlatColors */,
+				8F79C0A6180BA315003D972D /* FilterViewController */,
+				8F6D67D417C868FA0037F4FD /* SecondViewController */,
+				8F6D67D317C868EC0037F4FD /* FirstViewController */,
+				8FBBF07217C83FB600489AD1 /* ghostile */,
+				8FBBF06B17C83FB600489AD1 /* Frameworks */,
+				8FBBF06A17C83FB600489AD1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8FBBF06A17C83FB600489AD1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8FBBF06917C83FB600489AD1 /* ghostile.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8FBBF06B17C83FB600489AD1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8F79C0A4180B759D003D972D /* QuartzCore.framework */,
+				8F79C0A2180B7594003D972D /* OpenGLES.framework */,
+				8F79C0A0180B758F003D972D /* AVFoundation.framework */,
+				8F79C09E180B7589003D972D /* CoreVideo.framework */,
+				8F79C09C180B7583003D972D /* CoreMedia.framework */,
+				8F79C08F180B751E003D972D /* GPUImage.xcodeproj */,
+				8F6D67D717C95D630037F4FD /* Social.framework */,
+				8F6D67D517C95B0B0037F4FD /* Twitter.framework */,
+				8FBBF06C17C83FB600489AD1 /* UIKit.framework */,
+				8FBBF06E17C83FB600489AD1 /* Foundation.framework */,
+				8FBBF07017C83FB600489AD1 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8FBBF07217C83FB600489AD1 /* ghostile */ = {
+			isa = PBXGroup;
+			children = (
+				8F6D681617D193F50037F4FD /* ghostile.entitlements */,
+				8FBBF07B17C83FB600489AD1 /* GAppDelegate.h */,
+				8FBBF07C17C83FB600489AD1 /* GAppDelegate.m */,
+				8F79C0B3180BA906003D972D /* Images.xcassets */,
+				8FBBF07317C83FB600489AD1 /* Supporting Files */,
+			);
+			path = ghostile;
+			sourceTree = "<group>";
+		};
+		8FBBF07317C83FB600489AD1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8FBBF07417C83FB600489AD1 /* ghostile-Info.plist */,
+				8FBBF07517C83FB600489AD1 /* InfoPlist.strings */,
+				8FBBF07817C83FB600489AD1 /* main.m */,
+				8FBBF07A17C83FB600489AD1 /* ghostile-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8FFB86961852EB12005AC63A /* NewFilterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8FFB869418526866005AC63A /* FilterCollectionViewCell.xib */,
+				8FFB86911852684C005AC63A /* FilterCollectionViewCell.h */,
+				8FFB86921852684C005AC63A /* FilterCollectionViewCell.m */,
+				8FFB868C185267EF005AC63A /* NewFilterViewController.h */,
+				8FFB868D185267EF005AC63A /* NewFilterViewController.m */,
+				8FFB868E185267EF005AC63A /* NewFilterViewController.xib */,
+			);
+			name = NewFilterViewController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8FBBF06817C83FB600489AD1 /* ghostile */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8FBBF08617C83FB600489AD1 /* Build configuration list for PBXNativeTarget "ghostile" */;
+			buildPhases = (
+				8FBBF06517C83FB600489AD1 /* Sources */,
+				8FBBF06617C83FB600489AD1 /* Frameworks */,
+				8FBBF06717C83FB600489AD1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8F79C09A180B7552003D972D /* PBXTargetDependency */,
+			);
+			name = ghostile;
+			productName = ghostile;
+			productReference = 8FBBF06917C83FB600489AD1 /* ghostile.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8FBBF06117C83FB600489AD1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = G;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Michael Fellows";
+				TargetAttributes = {
+					8FBBF06817C83FB600489AD1 = {
+						DevelopmentTeam = UW63NW2D6H;
+					};
+				};
+			};
+			buildConfigurationList = 8FBBF06417C83FB600489AD1 /* Build configuration list for PBXProject "Ghostile" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8FBBF06017C83FB600489AD1;
+			productRefGroup = 8FBBF06A17C83FB600489AD1 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8F79C090180B751E003D972D /* Products */;
+					ProjectRef = 8F79C08F180B751E003D972D /* GPUImage.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				8FBBF06817C83FB600489AD1 /* ghostile */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		8F79C096180B751F003D972D /* libGPUImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGPUImage.a;
+			remoteRef = 8F79C095180B751F003D972D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8F79C098180B751F003D972D /* GPUImageTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GPUImageTests.octest;
+			remoteRef = 8F79C097180B751F003D972D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8FBBF06717C83FB600489AD1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FBBF07717C83FB600489AD1 /* InfoPlist.strings in Resources */,
+				8FFB869B1852EB58005AC63A /* FilterDetailView.xib in Resources */,
+				8FFB864C184E4EBA005AC63A /* gear@2x.png in Resources */,
+				8FBBF09217C844DE00489AD1 /* FirstViewController.xib in Resources */,
+				8FFB864B184E4EBA005AC63A /* gear.png in Resources */,
+				8F79C0AB180BA353003D972D /* Default-568h@2x.png in Resources */,
+				8F6D67D217C8682C0037F4FD /* SecondViewController.xib in Resources */,
+				8FFB868118526326005AC63A /* x-circle.png in Resources */,
+				8F79C0AD180BA353003D972D /* Default@2x.png in Resources */,
+				8F79C11B180C829A003D972D /* icon-60.png in Resources */,
+				8FFB8657184E5CDD005AC63A /* picture.png in Resources */,
+				8F3E6D1118538F4000540C3A /* DMResizerViewController.xib in Resources */,
+				8F79C114180C8227003D972D /* iTunesArtwork.png in Resources */,
+				8FFB868418526326005AC63A /* _Gear.png in Resources */,
+				8FFB86891852650A005AC63A /* next.png in Resources */,
+				8FFB869518526866005AC63A /* FilterCollectionViewCell.xib in Resources */,
+				8F79C11E180C9480003D972D /* icon-57@2x.png in Resources */,
+				8F79C115180C8227003D972D /* iTunesArtwork@2X.png in Resources */,
+				8F3E6D0A18538EB000540C3A /* instagram~ipad.png in Resources */,
+				8F3E6D0818538EB000540C3A /* instagram.png in Resources */,
+				8FFB8656184E5CDD005AC63A /* picture@2x.png in Resources */,
+				8F3E6D0918538EB000540C3A /* instagram@2x.png in Resources */,
+				8F79BDCE180B4AF6003D972D /* FilterViewController.xib in Resources */,
+				8FB964D6183AC9FD0038955A /* Palette@2x.png in Resources */,
+				8F79C0B4180BA906003D972D /* Images.xcassets in Resources */,
+				8F79C119180C829A003D972D /* icon-40.png in Resources */,
+				8F79C0AC180BA353003D972D /* Default.png in Resources */,
+				8F79C11A180C829A003D972D /* icon-29.png in Resources */,
+				8FFB868218526326005AC63A /* x-circle@2x.png in Resources */,
+				8FFB8690185267EF005AC63A /* NewFilterViewController.xib in Resources */,
+				8FFB868A1852650A005AC63A /* next@2x.png in Resources */,
+				8F79C11F180C9480003D972D /* icon-57.png in Resources */,
+				8FB964D7183AC9FD0038955A /* Palette.png in Resources */,
+				8F3E6D0B18538EB000540C3A /* instagram~ipad@2x.png in Resources */,
+				8FFB868318526326005AC63A /* _Gear@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8FBBF06517C83FB600489AD1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FBBF07917C83FB600489AD1 /* main.m in Sources */,
+				8FFB86991852EB41005AC63A /* FilterDetailView.m in Sources */,
+				8FBBF07D17C83FB600489AD1 /* GAppDelegate.m in Sources */,
+				8FFB86931852684C005AC63A /* FilterCollectionViewCell.m in Sources */,
+				8F3E6D1018538F4000540C3A /* DMResizerViewController.m in Sources */,
+				8FBBF09117C844DE00489AD1 /* FirstViewController.m in Sources */,
+				8F3E6D0318538EA500540C3A /* DMActivityInstagram.m in Sources */,
+				8FFB8652184E4F5F005AC63A /* SettingsViewController.m in Sources */,
+				8F6D67D117C8682C0037F4FD /* SecondViewController.m in Sources */,
+				8FFB868F185267EF005AC63A /* NewFilterViewController.m in Sources */,
+				8F79BDCD180B4AF6003D972D /* FilterViewController.m in Sources */,
+				8FB96548183C0D740038955A /* ZoomAnimationController.m in Sources */,
+				8F6D680D17D186120037F4FD /* UIColor+MLPFlatColors.m in Sources */,
+				8FB96547183C0D740038955A /* DropAnimationController.m in Sources */,
+				8F3E6D14185390BE00540C3A /* DMColorPickerView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8F79C09A180B7552003D972D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GPUImage;
+			targetProxy = 8F79C099180B7552003D972D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8FBBF07517C83FB600489AD1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8FBBF07617C83FB600489AD1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8FBBF08417C83FB600489AD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8FBBF08517C83FB600489AD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8FBBF08717C83FB600489AD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				CODE_SIGN_ENTITLEMENTS = ghostile/ghostile.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ghostile/ghostile-Prefix.pch";
+				HEADER_SEARCH_PATHS = "../ghostile/GPUImage/framework/Source/**";
+				INFOPLIST_FILE = "ghostile/ghostile-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				USER_HEADER_SEARCH_PATHS = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		8FBBF08817C83FB600489AD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				CODE_SIGN_ENTITLEMENTS = ghostile/ghostile.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ghostile/ghostile-Prefix.pch";
+				HEADER_SEARCH_PATHS = "../ghostile/GPUImage/framework/Source/**";
+				INFOPLIST_FILE = "ghostile/ghostile-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6C90265C-AA0A-422C-A933-E7160E8C5064";
+				USER_HEADER_SEARCH_PATHS = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8FBBF06417C83FB600489AD1 /* Build configuration list for PBXProject "Ghostile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8FBBF08417C83FB600489AD1 /* Debug */,
+				8FBBF08517C83FB600489AD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8FBBF08617C83FB600489AD1 /* Build configuration list for PBXNativeTarget "ghostile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8FBBF08717C83FB600489AD1 /* Debug */,
+				8FBBF08817C83FB600489AD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8FBBF06117C83FB600489AD1 /* Project object */;
+}
