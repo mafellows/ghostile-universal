@@ -51,7 +51,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self.navigationItem setTitle:@"Background"];
+    [self.navigationItem setTitle:NSLocalizedString(@"Background", nil)];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -178,7 +178,7 @@
     if ([[_backgroundImageView image] isKindOfClass:[UIImage class]]) {
         [self.textLabel setText:@""];
     } else {
-        [self.textLabel setText:@"Tap For Background Pic"];
+        [self.textLabel setText:NSLocalizedString(@"Tap For Background Pic", nil)];
     }
 }
 
@@ -186,12 +186,11 @@
 {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Foreground Photo"
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Foreground Photo", nil)
                                                                  delegate:self
-                                                        cancelButtonTitle:@"Cancel"
+                                                        cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
                                                    destructiveButtonTitle:nil
-                                                        otherButtonTitles:@"Take New Photo", @"Choose Existing Photo", nil];
-        
+                                                        otherButtonTitles:NSLocalizedString(@"Take New Photo", nil), NSLocalizedString(@"Choose Existing Photo", nil), nil];
         [actionSheet showFromBarButtonItem:_cameraButton animated:YES];
     } else {
         [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
@@ -264,8 +263,8 @@
     
     if (appLaunchAmounts < 1) {
         EAIntroPage *page1 = [EAIntroPage page];
-        page1.title = @"Welcome to Ghostile!";
-        page1.desc = @"Tap the screen to select your background photo.";
+        page1.title = NSLocalizedString(@"Welcome to Ghostile!", nil);
+        page1.desc = NSLocalizedString(@"Tap the screen to select your background photo.", nil);
         if ([UIScreen mainScreen].bounds.size.height < 568.0) {
             page1.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro1.png"] convertToSize:CGSizeMake(176, 312)];
         } else {
@@ -274,8 +273,8 @@
         
         
         EAIntroPage *page2 = [EAIntroPage page];
-        page2.title = @"We selected an ocean picture!";
-        page2.desc = @"Swipe right or hit the next button to select another picture.";
+        page2.title = NSLocalizedString(@"We selected an ocean picture!", nil);
+        page2.desc = NSLocalizedString(@"Swipe right or hit the next button to select another picture.", nil);
         if ([UIScreen mainScreen].bounds.size.height < 568.0) {
             page2.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro2.png"] convertToSize:CGSizeMake(176, 312)];
         } else {
@@ -283,8 +282,8 @@
         }
         
         EAIntroPage *page3 = [EAIntroPage page];
-        page3.title = @"Use Ghostile as the foreground.";
-        page3.desc = @"But this isn't very cool. What's next?";
+        page3.title = NSLocalizedString(@"Use Ghostile as the foreground.", nil);
+        page3.desc = NSLocalizedString(@"But this isn't very cool. What's next?", nil);
         if ([UIScreen mainScreen].bounds.size.height < 568.0) {
             page3.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro3.png"] convertToSize:CGSizeMake(176, 312)];
         } else {
@@ -292,8 +291,8 @@
         }
         
         EAIntroPage *page4 = [EAIntroPage page];
-        page4.title = @"Adjust the transparency slider.";
-        page4.desc = @"Fade to what looks best. Now this is better.";
+        page4.title = NSLocalizedString(@"Adjust the transparency slider.", nil);
+        page4.desc = NSLocalizedString(@"Fade to what looks best. Now this is better.", nil);
         if ([UIScreen mainScreen].bounds.size.height < 568.0) {
             page4.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro4.png"] convertToSize:CGSizeMake(176, 312)];
         } else {
@@ -301,8 +300,8 @@
         }
         
         EAIntroPage *page5 = [EAIntroPage page];
-        page5.title = @"Let's add a filter!";
-        page5.desc = @"Tap which filter you like best";
+        page5.title = NSLocalizedString(@"Let's add a filter!", nil);
+        page5.desc = NSLocalizedString(@"Tap which filter you like best", nil);
         if ([UIScreen mainScreen].bounds.size.height < 568.0) {
             page5.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro5.png"] convertToSize:CGSizeMake(176, 312)];
         } else {
@@ -310,8 +309,8 @@
         }
         
         EAIntroPage *page6 = [EAIntroPage page];
-        page6.title = @"This one looks cool...";
-        page6.desc = @"Tap the share button in the top right.";
+        page6.title = NSLocalizedString(@"This one looks cool...", nil);
+        page6.desc = NSLocalizedString(@"Tap the share button in the top right.", nil);
         if ([UIScreen mainScreen].bounds.size.height < 568.0) {
             page6.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro6.png"] convertToSize:CGSizeMake(176, 312)];
         } else {
@@ -319,8 +318,8 @@
         }
         
         EAIntroPage *page7 = [EAIntroPage page];
-        page7.title = @"Share your picture!";
-        page7.desc = @"Facebook, Twitter, Instagram. Or just keep it for yourself.";
+        page7.title = NSLocalizedString(@"Share your picture!", nil);
+        page7.desc = NSLocalizedString(@"Facebook, Twitter, Instagram. Or just keep it for yourself.", nil);
         if ([UIScreen mainScreen].bounds.size.height < 568.0) {
             page7.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro7.png"] convertToSize:CGSizeMake(176, 312)];
         } else {
@@ -341,4 +340,5 @@
     UIGraphicsEndImageContext();
     return destImage;
 }
+        
 @end

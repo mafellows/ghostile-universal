@@ -75,6 +75,7 @@
 		8FBBF07D17C83FB600489AD1 /* GAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBF07C17C83FB600489AD1 /* GAppDelegate.m */; };
 		8FBBF09117C844DE00489AD1 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBF08F17C844DE00489AD1 /* FirstViewController.m */; };
 		8FBBF09217C844DE00489AD1 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FBBF09017C844DE00489AD1 /* FirstViewController.xib */; };
+		8FC7303C1885BE3E00ABB4AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8FC7303E1885BE3E00ABB4AB /* Localizable.strings */; };
 		8FFB864B184E4EBA005AC63A /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFB8649184E4EBA005AC63A /* gear.png */; };
 		8FFB864C184E4EBA005AC63A /* gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFB864A184E4EBA005AC63A /* gear@2x.png */; };
 		8FFB8652184E4F5F005AC63A /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFB8650184E4F5F005AC63A /* SettingsViewController.m */; };
@@ -199,6 +200,9 @@
 		8FBBF08E17C844DE00489AD1 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		8FBBF08F17C844DE00489AD1 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		8FBBF09017C844DE00489AD1 /* FirstViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
+		8FC7303A1885A8AD00ABB4AB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8FC7303D1885BE3E00ABB4AB /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8FC7303F1885BE6500ABB4AB /* es */ = {isa = PBXFileReference; lastKnownFileType = file; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8FFB8649184E4EBA005AC63A /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
 		8FFB864A184E4EBA005AC63A /* gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@2x.png"; sourceTree = "<group>"; };
 		8FFB864F184E4F5F005AC63A /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -405,6 +409,7 @@
 		8FBBF06017C83FB600489AD1 = {
 			isa = PBXGroup;
 			children = (
+				8FC7303E1885BE3E00ABB4AB /* Localizable.strings */,
 				8F3FAAA21857640900B1E26F /* EAIntroView */,
 				8FAE8A171856363B00B52A57 /* Settings */,
 				8F3E6D0C18538F2D00540C3A /* DMActivityInstagram */,
@@ -527,6 +532,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				es,
 			);
 			mainGroup = 8FBBF06017C83FB600489AD1;
 			productRefGroup = 8FBBF06A17C83FB600489AD1 /* Products */;
@@ -617,6 +623,7 @@
 				8FFB868A1852650A005AC63A /* next@2x.png in Resources */,
 				8F79C11F180C9480003D972D /* icon-57.png in Resources */,
 				8FB964D7183AC9FD0038955A /* Palette.png in Resources */,
+				8FC7303C1885BE3E00ABB4AB /* Localizable.strings in Resources */,
 				8F3FAACF1858FFC700B1E26F /* intro4@2x.png in Resources */,
 				8F3E6D0B18538EB000540C3A /* instagram~ipad@2x.png in Resources */,
 				8FFB868318526326005AC63A /* _Gear@2x.png in Resources */,
@@ -665,8 +672,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				8FBBF07617C83FB600489AD1 /* en */,
+				8FC7303A1885A8AD00ABB4AB /* es */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		8FC7303E1885BE3E00ABB4AB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8FC7303D1885BE3E00ABB4AB /* en */,
+				8FC7303F1885BE6500ABB4AB /* es */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

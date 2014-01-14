@@ -1,0 +1,85 @@
+/* 
+  Localizable.strings
+  Ghostile
+
+  Created by Michael Fellows on 1/14/14.
+  Copyright (c) 2014 Michael Fellows. All rights reserved.
+*/
+
+
+"Background" = "Background";
+
+"Foreground" = "Foreground"
+
+"Tap For Background Pic" = "Tap For Background Pic";
+
+"Settings" = "Settings";
+
+"Add Filter" = "Add Filter"; 
+
+"Instructions" = "Instructions";
+
+"Contact Support" = "Contact Support";
+
+"Follow Broadway Lab on Twitter" = "Follow Broadway Lab on Twitter";
+
+"Follow Ghostile on Instagram" = "Follow Ghostile on Instagram";
+
+"Rate Ghostile" = "Rate Ghostile";
+
+
+"Having trouble? We'll walk you through the tutorial on how to use Ghostile" = "Having trouble? We'll walk you through the tutorial on how to use Ghostile.";
+
+"If you have questions or feedback, please contact support" = "If you have questions or feedback, please contact support.";
+
+"Connect with us and see incredible Ghostile photos from users across the world." = "Connect with us and see incredible Ghostile photos from users across the world.";
+
+"Please take a moment to rate Ghostile on the App Store." = "Please take a moment to rate Ghostile on the App Store.";
+
+"Dismiss" = "Dismiss";
+
+"Foreground Photo" = "Foreground Photo";
+
+"Take New Photo" = "Take New Photo";
+
+"Choose Existing Photo" = "Choose Existing Photo";
+
+"Cancel" = "Cancel";
+
+"Background Photo" = "Background Photo";
+
+"Ghostile: Support" = "Ghostile Support";
+
+"Welcome to Ghostile!" = "Welcome to Ghostile!";
+
+"Tap the screen to select your background photo." = "Tap the screen to select your background photo.";
+
+"We selected an ocean picture!" = "We selected an ocean picture!";
+
+"Swipe right or hit the next button to select another picture." = "Swipe right or hit the next button to select another picture.";
+
+"Use Ghostile as the foreground." = "Use Ghostile as the foreground.";
+
+"But this isn't very cool. What's next?" = "But this isn't very cool. What's next?";
+
+"Adjust the transparency slider." = "Adjust the transparency slider.";
+
+"Fade to what looks best. Now this is better." = "Fade to what looks best. Now this is better.";
+
+"Let's add a filter!" = "Let's add a filter!";
+
+"Tap which filter you like best" = "Tap which filter you like best";
+
+"This one looks cool..." = "This one looks cool...";
+
+"Tap the share buton in the top right." = "Tap the share buton in the top right.";
+
+"Share your picture!" = "Share your picture!";
+
+"Facebook, Twitter, Instagram. Or just keep it for yourself" = "Facebook, Twitter, Instagram. Or just keep it for yourself";
+
+"Skip" = "Skip";
+
+"Email Not Available" = "Email Not Available";
+
+"Your don't have email set up on your device." = "Your don't have email set up on your device."; 

@@ -43,9 +43,9 @@
 
 -(void)configureNavBar
 {
-    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Dismiss" style:UIBarButtonItemStylePlain target:self action:@selector(dismissSettingsController:)];
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Dismiss", nil) style:UIBarButtonItemStylePlain target:self action:@selector(dismissSettingsController:)];
     [self.navigationItem setLeftBarButtonItem:leftButton];
-    [self.navigationItem setTitle:@"Settings"];
+    [self.navigationItem setTitle:NSLocalizedString(@"Settings", nil)];
     
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:74 / 255 green:72 / 255 blue:78 / 255 alpha:0.75];
@@ -84,23 +84,23 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if (indexPath.section == 0) {
-        cell.textLabel.text = @"Instructions";
+        cell.textLabel.text = NSLocalizedString(@"Instructions", nil);
         cell.textLabel.textColor = [self normalColor];
     }
     
     if (indexPath.section == 1) {
-        cell.textLabel.text = @"Contact Support";
+        cell.textLabel.text = NSLocalizedString(@"Contact Support", nil);
         cell.textLabel.textColor = [self normalColor];
     }
     
     if (indexPath.section == 2) {
-        NSArray *section1 = @[ @"Follow Broadway Lab on Twitter", @"Follow Ghostile on Instagram"];
+        NSArray *section1 = @[ NSLocalizedString(@"Follow Broadway Lab on Twitter", nil), NSLocalizedString(@"Follow Ghostile on Instagram", nil)];
         cell.textLabel.text = section1[indexPath.row];
         cell.textLabel.textColor = [self accentColor];
     }
     
     if (indexPath.section == 3) {
-        cell.textLabel.text = @"Rate Ghostile";
+        cell.textLabel.text = NSLocalizedString(@"Rate Ghostile", nil);
         cell.textLabel.textColor = [self accentColor];
     }
     return cell;
@@ -110,19 +110,19 @@
 {
     NSString *footer;
     if (section == 0) {
-        footer = @"Having trouble? We'll walk you through the tutorial on how to use Ghostile.";
+        footer = NSLocalizedString(@"Having trouble? We'll walk you through the tutorial on how to use Ghostile.", nil);
     }
     
     if (section == 1) {
-        footer = @"If you have questions or feedback, please contact support.";
+        footer = NSLocalizedString(@"If you have questions or feedback, please contact support.", nil);
     }
     
     if (section == 2) {
-        footer = @"Connect with us and see incredible Ghostile photos from users across the world.";
+        footer = NSLocalizedString(@"Connect with us and see incredible Ghostile photos from users across the world.", nil);
     }
     
     if (section == 3) {
-        footer = @"Please take a moment to rate Ghostile on the App Store.";
+        footer = NSLocalizedString(@"Please take a moment to rate Ghostile on the App Store.", nil);
     }
     return footer;
 }
@@ -137,13 +137,13 @@
         if ([MFMailComposeViewController canSendMail]) {
             MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
             mailer.mailComposeDelegate = self;
-            [mailer setSubject:@"Ghostile: Support"];
+            [mailer setSubject:NSLocalizedString(@"Ghostile: Support", nil)];
             [mailer setMessageBody:@"" isHTML:NO];
             [mailer setToRecipients:@[@"hello@broadwaylab.com"]];
             [self presentViewController:mailer animated:YES completion:nil];
             
         } else {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Email Not Available" message:@"Your don't have email set up on your device." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Email Not Available", nil) message:NSLocalizedString(@"Your don't have email set up on your device.", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
         }
     }
@@ -182,70 +182,70 @@
 -(void)showIntro
 {
     EAIntroPage *page1 = [EAIntroPage page];
-    page1.title = @"Welcome to Ghostile!";
-    page1.desc = @"Tap the screen to select your background photo.";
-    if (self.view.frame.size.height < 568.0) {
+    page1.title = NSLocalizedString(@"Welcome to Ghostile!", nil);
+    page1.desc = NSLocalizedString(@"Tap the screen to select your background photo.", nil);
+    if ([UIScreen mainScreen].bounds.size.height < 568.0) {
         page1.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro1.png"] convertToSize:CGSizeMake(176, 312)];
     } else {
         page1.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro1.png"] convertToSize:CGSizeMake(224, 398)];
     }
-
+    
     
     EAIntroPage *page2 = [EAIntroPage page];
-    page2.title = @"We selected an ocean picture!";
-    page2.desc = @"Swipe right or hit the next button to select another picture.";
-    if (self.view.frame.size.height < 568.0) {
+    page2.title = NSLocalizedString(@"We selected an ocean picture!", nil);
+    page2.desc = NSLocalizedString(@"Swipe right or hit the next button to select another picture.", nil);
+    if ([UIScreen mainScreen].bounds.size.height < 568.0) {
         page2.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro2.png"] convertToSize:CGSizeMake(176, 312)];
     } else {
         page2.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro2.png"] convertToSize:CGSizeMake(224, 398)];
     }
     
     EAIntroPage *page3 = [EAIntroPage page];
-    page3.title = @"Use Ghostile as the foreground.";
-    page3.desc = @"But this isn't very cool. What's next?";
-    if (self.view.frame.size.height < 568.0) {
+    page3.title = NSLocalizedString(@"Use Ghostile as the foreground.", nil);
+    page3.desc = NSLocalizedString(@"But this isn't very cool. What's next?", nil);
+    if ([UIScreen mainScreen].bounds.size.height < 568.0) {
         page3.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro3.png"] convertToSize:CGSizeMake(176, 312)];
     } else {
         page3.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro3.png"] convertToSize:CGSizeMake(224, 398)];
     }
     
     EAIntroPage *page4 = [EAIntroPage page];
-    page4.title = @"Adjust the transparency slider.";
-    page4.desc = @"Fade to what looks best. Now this is better.";
-    if (self.view.frame.size.height < 568.0) {
+    page4.title = NSLocalizedString(@"Adjust the transparency slider.", nil);
+    page4.desc = NSLocalizedString(@"Fade to what looks best. Now this is better.", nil);
+    if ([UIScreen mainScreen].bounds.size.height < 568.0) {
         page4.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro4.png"] convertToSize:CGSizeMake(176, 312)];
     } else {
         page4.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro4.png"] convertToSize:CGSizeMake(224, 398)];
     }
     
     EAIntroPage *page5 = [EAIntroPage page];
-    page5.title = @"Let's add a filter!";
-    page5.desc = @"Tap which filter you like best";
-    if (self.view.frame.size.height < 568.0) {
+    page5.title = NSLocalizedString(@"Let's add a filter!", nil);
+    page5.desc = NSLocalizedString(@"Tap which filter you like best", nil);
+    if ([UIScreen mainScreen].bounds.size.height < 568.0) {
         page5.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro5.png"] convertToSize:CGSizeMake(176, 312)];
     } else {
         page5.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro5.png"] convertToSize:CGSizeMake(224, 398)];
     }
     
     EAIntroPage *page6 = [EAIntroPage page];
-    page6.title = @"This one looks cool...";
-    page6.desc = @"Tap the share button in the top right.";
-    if (self.view.frame.size.height < 568.0) {
+    page6.title = NSLocalizedString(@"This one looks cool...", nil);
+    page6.desc = NSLocalizedString(@"Tap the share button in the top right.", nil);
+    if ([UIScreen mainScreen].bounds.size.height < 568.0) {
         page6.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro6.png"] convertToSize:CGSizeMake(176, 312)];
     } else {
         page6.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro6.png"] convertToSize:CGSizeMake(224, 398)];
     }
     
     EAIntroPage *page7 = [EAIntroPage page];
-    page7.title = @"Share your picture!";
-    page7.desc = @"Facebook, Twitter, Instagram. Or just keep it for yourself.";
-    if (self.view.frame.size.height < 568.0) {
+    page7.title = NSLocalizedString(@"Share your picture!", nil);
+    page7.desc = NSLocalizedString(@"Facebook, Twitter, Instagram. Or just keep it for yourself.", nil);
+    if ([UIScreen mainScreen].bounds.size.height < 568.0) {
         page7.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro7.png"] convertToSize:CGSizeMake(176, 312)];
     } else {
         page7.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro7.png"] convertToSize:CGSizeMake(224, 398)];
     }
     
-    EAIntroView *introView = [[EAIntroView alloc] initWithFrame:self.view.frame andPages:@[page1, page2, page3, page4, page5, page6, page7]];
+    EAIntroView *introView = [[EAIntroView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) andPages:@[page1, page2, page3, page4, page5, page6, page7]];
     [introView showInView:self.navigationController.view animateDuration:1.0];
 }
 

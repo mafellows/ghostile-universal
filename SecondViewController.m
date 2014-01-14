@@ -94,7 +94,7 @@
 -(void)configureNavBar
 {
     // Navigation Bar Appearance
-    [self.navigationItem setTitle:@"Foreground"];
+    [self.navigationItem setTitle:NSLocalizedString(@"Foreground", nil)];
     clearButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"x-circle.png"]
                                                                     style:UIBarButtonItemStylePlain
                                                                    target:self
@@ -112,7 +112,7 @@
     CGFloat navBarHeight = self.navigationController.navigationBar.frame.size.height;
     CGFloat heightICareAbout = viewHeight - statusBarHeight - navBarHeight;
     CGFloat gap = heightICareAbout - imageHeight - toolbarHeight;
-    CGFloat startSlider = heightICareAbout - toolbarHeight - (gap / 2) - 20.0; // 20pt offset
+    CGFloat startSlider = heightICareAbout - toolbarHeight - (gap / 2) - 20.0;
     
     // Padding for sides of _slider
     CGFloat padding = 15.0;
@@ -181,7 +181,7 @@
 -(void)checkText
 {
     if (!_backgroundImage && ![_foregroundImageView image]) {
-        [_textLabel setText:@"Tap For Foreground Pic"];
+        [_textLabel setText:NSLocalizedString(@"Tap For Foreground Pic", nil)];
     } else {
         [_textLabel setText:@""];
     }
@@ -198,11 +198,11 @@
 {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        UIActionSheet *cameraSheet = [[UIActionSheet alloc] initWithTitle:@"Background Photo"
+        UIActionSheet *cameraSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Background Photo", nil)
                                                                  delegate:self
-                                                        cancelButtonTitle:@"Cancel"
+                                                        cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
                                                    destructiveButtonTitle:nil
-                                                        otherButtonTitles:@"Take New Photo", @"Choose Existing Photo", nil];
+                                                        otherButtonTitles:NSLocalizedString(@"Take New Photo", nil), NSLocalizedString(@"Choose Existing Photo", nil), nil];
         [cameraSheet showFromBarButtonItem:_cameraButton animated:YES];
     } else {
         [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
