@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "DMResizerViewController.h"
 
+@class SecondViewController; 
+
 @interface DMActivityInstagram : UIActivity <DMResizerDelegate, UIDocumentInteractionControllerDelegate>
 
 @property (nonatomic, strong) UIImage *shareImage;
@@ -20,6 +22,7 @@
 // overwritten if shareImage is non-square, because the document-interaction-controller is presented in the resize view.
 
 @property (nonatomic, strong) DMResizerViewController *resizeController;
+@property (nonatomic, strong) SecondViewController *secondViewController;
 
 @property (nonatomic, strong) UIDocumentInteractionController *documentController;
 

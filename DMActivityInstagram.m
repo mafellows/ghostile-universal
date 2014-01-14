@@ -7,6 +7,7 @@
 //
 
 #import "DMActivityInstagram.h"
+#import "SecondViewController.h"
 
 @implementation DMActivityInstagram
 
@@ -58,12 +59,13 @@
     if (!self.resizeController) {
         self.resizeController = [[DMResizerViewController alloc] initWithImage:self.shareImage andDelegate:self];
         
-        if ([self imageIsSquare:self.shareImage]) {
-            self.resizeController.skipCropping = YES;
-        }
+//        if ([self imageIsSquare:self.shareImage]) {
+//            self.resizeController.skipCropping = YES;
+//        }
         self.resizeController.skipCropping = YES;
     }
-    return self.resizeController;
+
+    return nil;
 }
 
 -(void)resizer:(DMResizerViewController *)resizer finishedResizingWithResult:(UIImage *)image {
@@ -74,7 +76,7 @@
         [self activityDidFinish:NO];
         return;
     } else {
-        self.presentFromButton = resizer.doneButton;
+        self.presentFromButton = self.secondViewController.saveButton; // resizer.doneButton;
         self.shareImage = image;
         // performActivity
         [self performActivity];
@@ -110,7 +112,6 @@
     self.documentController.delegate = self;
     [self.documentController setUTI:@"com.instagram.exclusivegram"];
     if (self.shareString) [self.documentController setAnnotation:@{@"InstagramCaption" : self.shareString}];
-    
     if (![self.documentController presentOpenInMenuFromBarButtonItem:self.presentFromButton animated:YES]) NSLog(@"couldn't present document interaction controller");
 }
 

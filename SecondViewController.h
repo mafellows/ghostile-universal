@@ -8,11 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, UIViewControllerTransitioningDelegate>
-{
-//    CGFloat backgroundSliderValue;
-    IBOutlet UIToolbar *toolbar;
-}
+@interface SecondViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *foregroundImageView;
 @property (strong, nonatomic) IBOutlet UISlider *slider;

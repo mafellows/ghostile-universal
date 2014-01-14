@@ -10,16 +10,12 @@
 #import "FilterViewController.h"
 #import <Social/Social.h> 
 #import "UIColor+MLPFlatColors.h"
-#import "ADVAnimationController.h"
-#import "ZoomAnimationController.h"
 #import "NewFilterViewController.h"
 #import "DMActivityInstagram.h"
 
 @interface SecondViewController () {
-    UIActionSheet *cameraSheet;
-    UIActionSheet *saveSheet;
-    UIActionSheet *cameraRollSheet;
     UIImage *resultingImage;
+    UIBarButtonItem *clearButton;
 }
 -(void)checkText;
 @end
@@ -31,9 +27,9 @@
 @synthesize foregroundImageView = _foregroundImageView;
 @synthesize backgroundImageView = _backgroundImageView;
 @synthesize backgroundImage = _backgroundImage; 
-@synthesize backgroundSliderValue;
-@synthesize textLabel;
-@synthesize toolbar = _toolbar; 
+@synthesize backgroundSliderValue = _backgroundSliderValue;
+@synthesize textLabel = _textLabel;
+@synthesize toolbar = _toolbar;
 
 - (void)viewDidLoad
 {
@@ -46,12 +42,11 @@
     [self configureSlider];
     [self addSwipeRecognizer];
     [self handleiOS7];
+    [self enableButtons];
 
     // Camera Button
     [_cameraButton setAction:@selector(showActionSheet:)];
-    [_filterButton setAction:@selector(showFilterController:)]; 
-    
-    _saveButton.enabled = [self areImages];
+    [_filterButton setAction:@selector(showFilterController:)];
 }
 
 #pragma mark - Appearance
@@ -82,7 +77,7 @@
     _backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320.0, 320.0)];
     [_backgroundImageView setBounds:CGRectMake(0, 0, 320.0, 320.0)];
     [_backgroundImageView setImage:_backgroundImage];
-    [_backgroundImageView setAlpha:backgroundSliderValue];
+    [_backgroundImageView setAlpha:_backgroundSliderValue];
     [self.view addSubview:_backgroundImageView];
     
     // Add foregroundImageView;
@@ -95,12 +90,11 @@
 {
     // Navigation Bar Appearance
     [self.navigationItem setTitle:@"Foreground"];
-    UIBarButtonItem *clearButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"x-circle.png"]
+    clearButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"x-circle.png"]
                                                                     style:UIBarButtonItemStylePlain
                                                                    target:self
                                                                    action:@selector(clearImage:)];
     [self.navigationItem setRightBarButtonItem:clearButton];
-    [toolbar setTintColor:[UIColor blackColor]];
 }
 
 -(void)configureSlider
@@ -153,12 +147,20 @@
 
 #pragma mark - Convenience Methods
 
--(BOOL)areImages
+-(void)enableButtons
 {
     if ([_backgroundImageView image] == nil && [_foregroundImageView image] == nil) {
-        return NO;
+        _filterButton.enabled = NO;
+        _saveButton.enabled = NO;
     } else {
-        return YES;
+        _filterButton.enabled = YES;
+        _saveButton.enabled = YES;
+    }
+    
+    if (_foregroundImageView.image == nil) {
+        clearButton.enabled = NO;
+    } else {
+        clearButton.enabled = YES;
     }
 }
 
@@ -169,15 +171,15 @@
     [_foregroundImageView setImage:nil];
     [self checkText];
     // Check the status of the background image - Make this a method?
-    _saveButton.enabled = [self areImages];
+    [self enableButtons];
 }
 
 -(void)checkText
 {
     if (!_backgroundImage && ![_foregroundImageView image]) {
-        [textLabel setText:@"Tap For Foreground Pic"];
+        [_textLabel setText:@"Tap For Foreground Pic"];
     } else {
-        [textLabel setText:@""];
+        [_textLabel setText:@""];
     }
 }
 
@@ -187,16 +189,16 @@
 }
 
 #pragma mark - Selector methods
+
 -(void)showActionSheet:(id)sender
 {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        cameraSheet = [[UIActionSheet alloc] initWithTitle:@"Take Photo"
+        UIActionSheet *cameraSheet = [[UIActionSheet alloc] initWithTitle:@"Background Photo"
                                                                  delegate:self
                                                         cancelButtonTitle:@"Cancel"
                                                    destructiveButtonTitle:nil
-                                                        otherButtonTitles:@"Take New Photo", @"Choose Existing Photo", @"Add Filter", nil];
-        
+                                                        otherButtonTitles:@"Take New Photo", @"Choose Existing Photo", nil];
         [cameraSheet showFromBarButtonItem:_cameraButton animated:YES];
     } else {
         [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
@@ -216,7 +218,7 @@
 {
     DMActivityInstagram *activityInstagram = [[DMActivityInstagram alloc] init];
     resultingImage = [self getResultingImage];
-    NSArray *activityItems = @[@"Hello World", resultingImage, [NSURL URLWithString:@""]];
+    NSArray *activityItems = @[@"#ghostile", resultingImage, [NSURL URLWithString:@""]];
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:@[activityInstagram]];
     [self presentViewController:activityViewController animated:YES completion:nil];
 }
@@ -238,9 +240,7 @@
     [[self foregroundImageView] setImage:image];
     [self dismissViewControllerAnimated:YES completion:nil];
     [self checkText];
-    if (![_saveButton isEnabled]) {
-        [_saveButton setEnabled:YES];
-    }
+    [self enableButtons];
 }
 
 
@@ -248,90 +248,23 @@
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (actionSheet == cameraSheet) {
-
-        if (buttonIndex == 0) {
-            UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-            [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
-            imagePicker.allowsEditing = YES;
-            [imagePicker setDelegate:self];
-            [self presentViewController:imagePicker animated:YES completion:nil];
-        } else if (buttonIndex == 1) {
-            UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-            [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-            imagePicker.allowsEditing = YES;
-            [imagePicker setDelegate:self];
-            [self presentViewController:imagePicker animated:YES completion:nil];
-        } else if (buttonIndex == 2) {
-            // Get numbers for the image context
-            float width = [[self backgroundImageView] bounds].size.width;
-            float height = [[self backgroundImageView] bounds].size.height;
-            CGFloat backgroundAlpha = [self backgroundSliderValue];
-            CGFloat foregroundAlpha = [[self slider] value];
-            
-            // Get the image
-            UIGraphicsBeginImageContext(CGSizeMake(width, height));
-            [[[self backgroundImageView] image] drawInRect:CGRectMake(0.0, 0.0, width, height) blendMode:kCGBlendModeNormal alpha:backgroundAlpha];
-            [[[self foregroundImageView] image] drawInRect:CGRectMake(0, 0, width, height) blendMode:kCGBlendModeNormal alpha:foregroundAlpha];
-            resultingImage = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
-            
-            // Check if there's an image to filter!
-            if ([_backgroundImageView image] == nil && [_foregroundImageView image] == nil) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Ghostile Image"
-                                                                message:@"Take some pictures before adding filters"
-                                                               delegate:self
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil, nil];
-                [alert show];
-            } else {
-                // Add Filter View Controller
-                FilterViewController *fvc = [[FilterViewController alloc] init];
-                [fvc setImage:resultingImage];
-                [self presentViewController:fvc animated:YES completion:nil];
-            }
-            
-        }
-
-    }
-    
-    if (actionSheet == cameraRollSheet) {
-        if (buttonIndex == 0) {
-            UIImageWriteToSavedPhotosAlbum(resultingImage, nil, nil, nil);
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Image Saved"
-                                                            message:@"Image saved to camera roll"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil, nil];
-            [alert show];
-        }
-    }
-    
-    if (actionSheet == saveSheet) {
-        if (buttonIndex == 0) {
-            UIImageWriteToSavedPhotosAlbum(resultingImage, nil, nil, nil);
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Image Saved"
-                                                            message:@"Image saved to camera roll"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil, nil];
-            [alert show];
-        } else if (buttonIndex == 1) {
-            SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-            [tweetSheet setInitialText:@"Check out my awesome ghost pick from #ghostile"];
-            [tweetSheet addImage:resultingImage];
-            [self presentViewController:tweetSheet animated:YES completion:nil];
-        } else if (buttonIndex == 2) {
-            SLComposeViewController *facebookSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-            [facebookSheet setInitialText:@"Great picture made with Ghostile!"];
-            [facebookSheet addImage:resultingImage];
-            [self presentViewController:facebookSheet animated:YES completion:nil];
-        }
-        
+    if (buttonIndex == 0) {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
+        imagePicker.allowsEditing = YES;
+        [imagePicker setDelegate:self];
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    } else if (buttonIndex == 1) {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+        imagePicker.allowsEditing = YES;
+        [imagePicker setDelegate:self];
+        [self presentViewController:imagePicker animated:YES completion:nil];
     }
 }
 
 #pragma mark - Get current image 
+
 -(UIImage *)getResultingImage
 {
     float width = [[self backgroundImageView] bounds].size.width;
@@ -347,7 +280,6 @@
     UIGraphicsEndImageContext();
     return resultingImage;
 }
-
 @end
 
 
