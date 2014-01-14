@@ -13,7 +13,10 @@
 #import "EAIntroPage.h"
 #import "EAIntroView.h"
 
-@interface FirstViewController () <EAIntroDelegate>
+@interface FirstViewController () <EAIntroDelegate> {
+    CGFloat screenWidth;
+    CGRect imageViewRect;
+}
 @end
 
 @implementation FirstViewController
@@ -27,6 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    screenWidth = [[UIScreen mainScreen] bounds].size.width;
+    imageViewRect = CGRectMake(0, 0, screenWidth, screenWidth);
 
     [self configureNavBar];
     [self configureToolbar];
@@ -39,7 +44,6 @@
     
     // EAIntroView
     [self showIntro];
-    
     
     // CameraButtonItem
     [self.cameraButton setAction:@selector(showActionSheet:)];
@@ -63,7 +67,7 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button addTarget:self action:@selector(showActionSheet:) forControlEvents:UIControlEventTouchUpInside];
     [button setTitle:@"" forState:UIControlStateNormal];
-    [button setFrame:CGRectMake(0, 0, 320.0, 320.0)]; // Abstract the frame size
+    [button setFrame:imageViewRect];
     [self.view addSubview:button];
     
     // Add Swipe Recognizer
@@ -76,8 +80,8 @@
 -(void)configureImageView
 {
     // Add UIImageView
-    _backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320.0, 320.0)];
-    [_backgroundImageView setBounds:CGRectMake(0, 0, 320.0, 320.0)];
+    _backgroundImageView = [[UIImageView alloc] initWithFrame:imageViewRect];
+    [_backgroundImageView setBounds:imageViewRect];
     [self.view addSubview:_backgroundImageView];
 }
 
@@ -114,7 +118,7 @@
     CGFloat padding = 15.0;
     
     // Add UISlider
-    _slider = [[UISlider alloc] initWithFrame:CGRectMake(padding, startSlider, self.view.frame.size.width - padding * 2, 40)];
+    _slider = [[UISlider alloc] initWithFrame:CGRectMake(padding, startSlider, screenWidth - padding * 2, 40)];
     [_slider setMaximumValue:1.0];
     [_slider setMinimumValue:0.0];
     [_slider setValue:1.0];
@@ -208,7 +212,6 @@
     UIImage *selectedImage = [[self backgroundImageView] image];
     CGFloat sliderValue = [[self slider] value]; 
     SecondViewController *svc = [[SecondViewController alloc] init];
-    // Setter methods
     [svc setBackgroundImage:selectedImage];
     [svc setBackgroundSliderValue:sliderValue];
     [[self navigationController] pushViewController:svc animated:YES]; 
@@ -219,7 +222,6 @@
     UIImage *selectedImage = [[self backgroundImageView] image];
     CGFloat sliderValue = [[self slider] value];
     SecondViewController *svc = [[SecondViewController alloc] init];
-    // Setter methods
     [svc setBackgroundImage:selectedImage];
     [svc setBackgroundSliderValue:sliderValue];
     [[self navigationController] pushViewController:svc animated:YES];

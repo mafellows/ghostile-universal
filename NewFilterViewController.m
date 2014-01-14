@@ -17,6 +17,8 @@
     UIView *clearView;
     UIBarButtonItem *rightButton;
     UIImageView *imageView;
+    CGFloat screenWidth;
+    CGFloat screenHeight;
 }
 
 @end
@@ -36,7 +38,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    screenWidth = [[UIScreen mainScreen] bounds].size.width;
+    screenHeight = [[UIScreen mainScreen] bounds].size.height;
     [self configureNavBar]; 
     [self.view setBackgroundColor:[UIColor colorWithRed:247/255.0f green:247/255.0f blue:247/255.0f alpha:1.0f]];
     [_collectionView setBackgroundColor:[UIColor clearColor]];
@@ -77,27 +80,28 @@
 -(void)showViewWithImage:(UIImage *)image
 {
     rightButton.enabled = YES;
-    clearView = [[UIView alloc] initWithFrame:self.view.frame];
+    CGRect deviceFrame = CGRectMake(0, 0, screenWidth, screenHeight);
+    clearView = [[UIView alloc] initWithFrame:deviceFrame];
     clearView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:clearView];
-    UIView *transparentView = [[UIView alloc] initWithFrame:self.view.frame];
+    UIView *transparentView = [[UIView alloc] initWithFrame:deviceFrame];
     UIColor *bg = [[UIColor blackColor] colorWithAlphaComponent:0.6];
     transparentView.backgroundColor = bg;
     [clearView addSubview:transparentView];
     
     imageView = [[UIImageView alloc] initWithImage:image];
     CGFloat y = self.view.frame.size.height / 2 - 160.0;
-    NSLog(@"%f", y);
-    imageView.frame = CGRectMake(0, y, 320.0, 320.0);
+    // NSLog(@"%f", y);
+    imageView.frame = CGRectMake(0, y, screenWidth, screenWidth);
     imageView.backgroundColor = [UIColor whiteColor];
     imageView.opaque = YES;
     [clearView addSubview:imageView];
     
-    UIButton *clearButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    UIButton *clearButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
     [transparentView addSubview:clearButton];
     [clearButton addTarget:self action:@selector(dismissView:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton *bottomClearButton = [[UIButton alloc] initWithFrame:CGRectMake(0, y + 320.0, 320.0, y)];
+    UIButton *bottomClearButton = [[UIButton alloc] initWithFrame:CGRectMake(0, y + screenWidth, screenWidth, y)];
     [transparentView addSubview:bottomClearButton];
     [bottomClearButton addTarget:self action:@selector(dismissView:) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -126,12 +130,9 @@
 
 -(UIImage *)getResultingImage
 {
-    float width = 320.0;
-    float height = 320.0;
-    
     // Get the image
-    UIGraphicsBeginImageContext(CGSizeMake(width, height));
-    [imageView.image drawInRect:CGRectMake(0, 0, 320.0, 320.0) blendMode:kCGBlendModeNormal alpha:1.0];
+    UIGraphicsBeginImageContext(CGSizeMake(screenWidth, screenWidth));
+    [imageView.image drawInRect:CGRectMake(0, 0, screenWidth, screenWidth) blendMode:kCGBlendModeNormal alpha:1.0];
     resultingImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return resultingImage; 
@@ -170,7 +171,7 @@
                  layout:(UICollectionViewLayout *)collectionViewLayout
  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(160, 160);
+    return CGSizeMake(screenWidth / 2, screenWidth / 2);
 }
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView
