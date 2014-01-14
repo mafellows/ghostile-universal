@@ -1,30 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="1536" defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
-=======
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
-    <dependencies>
-        <deployment version="1536" defaultVersion="1296" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SecondViewController">
             <connections>
                 <outlet property="cameraButton" destination="dnj-Uh-Kfq" id="5CD-3O-EoM"/>
-<<<<<<< HEAD
                 <outlet property="filterButton" destination="aPc-Ad-MLU" id="RfE-86-0hY"/>
                 <outlet property="saveButton" destination="RgB-hy-5Hq" id="hKb-hL-MaT"/>
                 <outlet property="textLabel" destination="YQ3-SK-Ire" id="zf7-29-sQa"/>
                 <outlet property="toolbar" destination="Brv-ib-jHu" id="WAc-KR-RQj"/>
-=======
-                <outlet property="saveButton" destination="RgB-hy-5Hq" id="hKb-hL-MaT"/>
-                <outlet property="textLabel" destination="YQ3-SK-Ire" id="zf7-29-sQa"/>
-                <outlet property="toolbar" destination="Brv-ib-jHu" id="Pfl-oi-mjK"/>
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -39,13 +26,9 @@
                     <items>
                         <barButtonItem title="Item" systemItem="camera" id="dnj-Uh-Kfq"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="hID-de-nNh"/>
-<<<<<<< HEAD
                         <barButtonItem image="picture.png" style="plain" id="aPc-Ad-MLU"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="mwM-pI-4kv"/>
                         <barButtonItem systemItem="action" id="RgB-hy-5Hq">
-=======
-                        <barButtonItem title="Save" id="RgB-hy-5Hq">
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
                             <connections>
                                 <action selector="saveButtonPressed:" destination="-1" id="SiB-Zd-4mU"/>
                             </connections>
@@ -69,10 +52,7 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
-<<<<<<< HEAD
     <resources>
         <image name="picture.png" width="32" height="32"/>
     </resources>
-=======
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
 </document>

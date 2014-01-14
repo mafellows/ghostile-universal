@@ -9,12 +9,11 @@
 #import "FirstViewController.h"
 #import "SecondViewController.h"
 #import "UIColor+MLPFlatColors.h"
-<<<<<<< HEAD
 #import "SettingsViewController.h"
-=======
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
+#import "EAIntroPage.h"
+#import "EAIntroView.h"
 
-@interface FirstViewController () 
+@interface FirstViewController () <EAIntroDelegate>
 @end
 
 @implementation FirstViewController
@@ -22,16 +21,12 @@
 @synthesize slider = _slider;
 @synthesize cameraButton = _cameraButton;
 @synthesize nextButton = _nextButton;
-<<<<<<< HEAD
 @synthesize toolbar = _toolbar;
 
-=======
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-<<<<<<< HEAD
 
     [self configureNavBar];
     [self configureToolbar];
@@ -42,8 +37,9 @@
     [self configureSlider];
     [self handleiOS7];
     
-    // Test
-//    [self.view setUserInteractionEnabled:YES];
+    // EAIntroView
+    [self showIntro];
+    
     
     // CameraButtonItem
     [self.cameraButton setAction:@selector(showActionSheet:)];
@@ -63,23 +59,6 @@
 
 -(void)configureClearButton
 {
-=======
-    // Configure Navigation Bar
-    UIBarButtonItem *clearButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(clearImage:)];
-    [self.navigationItem setRightBarButtonItem:clearButton];
-    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
-    [toolbar setTintColor:[UIColor blackColor]];
-
-    // Configure UITextLabel
-    [self.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:24.0]];
-    [self checkText];
-    
-    // Add UIImageView
-    _backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320.0, 320.0)];
-    [_backgroundImageView setBounds:CGRectMake(0, 0, 320.0, 320.0)];
-    [self.view addSubview:_backgroundImageView];
-    
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
     // Add button over image
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button addTarget:self action:@selector(showActionSheet:) forControlEvents:UIControlEventTouchUpInside];
@@ -87,7 +66,6 @@
     [button setFrame:CGRectMake(0, 0, 320.0, 320.0)]; // Abstract the frame size
     [self.view addSubview:button];
     
-<<<<<<< HEAD
     // Add Swipe Recognizer
     UISwipeGestureRecognizer *swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRecognized:)];
     [swipeRecognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
@@ -137,26 +115,12 @@
     
     // Add UISlider
     _slider = [[UISlider alloc] initWithFrame:CGRectMake(padding, startSlider, self.view.frame.size.width - padding * 2, 40)];
-=======
-    // Configure starting point for UISlider
-    CGFloat toolbarHeight = toolbar.frame.size.height;
-    CGFloat imageHeight = 320.0;
-    CGFloat offset = 36.0;
-    CGFloat viewHeight = [[UIScreen mainScreen] bounds].size.height;
-    CGFloat gap = viewHeight - imageHeight - toolbarHeight;
-    CGFloat startSlider = imageHeight + (gap / 2) - offset;
-    CGFloat padding = 15.0;
-    
-    // Add UISlider
-    _slider = [[UISlider alloc] initWithFrame:CGRectMake(padding, startSlider, self.view.frame.size.width - padding * 2, 20)];
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
     [_slider setMaximumValue:1.0];
     [_slider setMinimumValue:0.0];
     [_slider setValue:1.0];
     [_slider addTarget:self
                 action:@selector(sliderChanged:)
       forControlEvents:UIControlEventValueChanged];
-<<<<<<< HEAD
     
     _slider.minimumTrackTintColor = [UIColor colorWithRed:102.0 / 255.0 green:204.0 / 255.0 blue:204.0 / 255.0 alpha:1.0];
     [self.view addSubview:_slider];
@@ -192,44 +156,6 @@
 }
 
 
-=======
-    [self.view addSubview:_slider];
-    
-    // Test
-    [self.view setUserInteractionEnabled:YES];
-    
-    // CameraButtonItem
-    [self.cameraButton setAction:@selector(showActionSheet:)];
-    
-    // Add Swipe Recognizer
-    UISwipeGestureRecognizer *swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRecognized:)];
-    [swipeRecognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
-    [button addGestureRecognizer:swipeRecognizer];
-    
-    // iOS 7 updates
-    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    
-}
-
-// Hide status bar for iOS 7 devices
--(BOOL)prefersStatusBarHidden
-{
-    return YES;
-}
-
-#pragma mark - View Methods
--(void)viewWillAppear:(BOOL)animated
-{
-    [self.navigationItem setTitle:@"Background"];
-}
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    [self.navigationItem setTitle:@""];
-}
-
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
 #pragma mark - Selector Metods
 -(void)clearImage:(id)sender
 {
@@ -256,7 +182,7 @@
 {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Take Photo"
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Foreground Photo"
                                                                  delegate:self
                                                         cancelButtonTitle:@"Cancel"
                                                    destructiveButtonTitle:nil
@@ -271,7 +197,6 @@
     [self checkText];
 }
 
-<<<<<<< HEAD
 -(void)showSettings:(id)sender
 {
     SettingsViewController *svc = [[SettingsViewController alloc] init];
@@ -279,20 +204,13 @@
     [self.navigationController presentViewController:navController animated:YES completion:nil];
 }
 
-=======
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
 - (IBAction)nextButtonPressed:(id)sender {
     UIImage *selectedImage = [[self backgroundImageView] image];
     CGFloat sliderValue = [[self slider] value]; 
     SecondViewController *svc = [[SecondViewController alloc] init];
     // Setter methods
     [svc setBackgroundImage:selectedImage];
-<<<<<<< HEAD
     [svc setBackgroundSliderValue:sliderValue];
-=======
-    [svc setBackgroundSliderValue:sliderValue]; 
-    
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
     [[self navigationController] pushViewController:svc animated:YES]; 
 }
 
@@ -304,10 +222,6 @@
     // Setter methods
     [svc setBackgroundImage:selectedImage];
     [svc setBackgroundSliderValue:sliderValue];
-<<<<<<< HEAD
-=======
-    
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
     [[self navigationController] pushViewController:svc animated:YES];
 }
 
@@ -336,10 +250,93 @@
         imagePicker.allowsEditing = YES;
         [self presentViewController:imagePicker animated:YES completion:nil]; 
     }
-<<<<<<< HEAD
-=======
-    
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
     [imagePicker setDelegate:self]; 
+}
+
+#pragma mark - EAIntro
+
+-(void)showIntro
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSInteger appLaunchAmounts = [userDefaults integerForKey:@"LaunchAmounts"];
+    
+    if (appLaunchAmounts < 1) {
+        EAIntroPage *page1 = [EAIntroPage page];
+        page1.title = @"Welcome to Ghostile!";
+        page1.desc = @"Tap the screen to select your background photo.";
+        if ([UIScreen mainScreen].bounds.size.height < 568.0) {
+            page1.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro1.png"] convertToSize:CGSizeMake(176, 312)];
+        } else {
+            page1.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro1.png"] convertToSize:CGSizeMake(224, 398)];
+        }
+        
+        
+        EAIntroPage *page2 = [EAIntroPage page];
+        page2.title = @"We selected an ocean picture!";
+        page2.desc = @"Swipe right or hit the next button to select another picture.";
+        if ([UIScreen mainScreen].bounds.size.height < 568.0) {
+            page2.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro2.png"] convertToSize:CGSizeMake(176, 312)];
+        } else {
+            page2.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro2.png"] convertToSize:CGSizeMake(224, 398)];
+        }
+        
+        EAIntroPage *page3 = [EAIntroPage page];
+        page3.title = @"Use Ghostile as the foreground.";
+        page3.desc = @"But this isn't very cool. What's next?";
+        if ([UIScreen mainScreen].bounds.size.height < 568.0) {
+            page3.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro3.png"] convertToSize:CGSizeMake(176, 312)];
+        } else {
+            page3.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro3.png"] convertToSize:CGSizeMake(224, 398)];
+        }
+        
+        EAIntroPage *page4 = [EAIntroPage page];
+        page4.title = @"Adjust the transparency slider.";
+        page4.desc = @"Fade to what looks best. Now this is better.";
+        if ([UIScreen mainScreen].bounds.size.height < 568.0) {
+            page4.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro4.png"] convertToSize:CGSizeMake(176, 312)];
+        } else {
+            page4.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro4.png"] convertToSize:CGSizeMake(224, 398)];
+        }
+        
+        EAIntroPage *page5 = [EAIntroPage page];
+        page5.title = @"Let's add a filter!";
+        page5.desc = @"Tap which filter you like best";
+        if ([UIScreen mainScreen].bounds.size.height < 568.0) {
+            page5.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro5.png"] convertToSize:CGSizeMake(176, 312)];
+        } else {
+            page5.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro5.png"] convertToSize:CGSizeMake(224, 398)];
+        }
+        
+        EAIntroPage *page6 = [EAIntroPage page];
+        page6.title = @"This one looks cool...";
+        page6.desc = @"Tap the share button in the top right.";
+        if ([UIScreen mainScreen].bounds.size.height < 568.0) {
+            page6.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro6.png"] convertToSize:CGSizeMake(176, 312)];
+        } else {
+            page6.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro6.png"] convertToSize:CGSizeMake(224, 398)];
+        }
+        
+        EAIntroPage *page7 = [EAIntroPage page];
+        page7.title = @"Share your picture!";
+        page7.desc = @"Facebook, Twitter, Instagram. Or just keep it for yourself.";
+        if ([UIScreen mainScreen].bounds.size.height < 568.0) {
+            page7.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro7.png"] convertToSize:CGSizeMake(176, 312)];
+        } else {
+            page7.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro7.png"] convertToSize:CGSizeMake(224, 398)];
+        }
+        
+        EAIntroView *introView = [[EAIntroView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) andPages:@[page1, page2, page3, page4, page5, page6, page7]];
+        [introView showInView:self.navigationController.view animateDuration:0.0];
+    }
+    [userDefaults setInteger:appLaunchAmounts+1 forKey:@"LaunchAmounts"];
+}
+
+-(UIImage *)imageWithImage:(UIImage *)image convertToSize:(CGSize)size
+{
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return destImage;
 }
 @end

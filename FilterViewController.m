@@ -14,11 +14,7 @@
 
 @interface FilterViewController () {
     NSArray *array;
-<<<<<<< HEAD
     NSInteger i;
-=======
-    int i;
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
     GPUImagePicture *stillImageSource;
     UIImage *resultingImage;
     UIImageView *imageView;
@@ -34,11 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-<<<<<<< HEAD
     array = @[@"Swipe To Add Filter",@"Sepia",@"Vignette",@"Emboss",@"Grayscale", @"Blur", @"Cartoon", @"Sketch", @"Swirl", @"Smooth Toon", @"Sketch 2", @"Cross Hatch", @"Half Tone", @"Polka Dot", @"Pixelate", @"Hue Blend", @"Color Inverter", @"Haze Filter", @"Voronoi Filter", @"Mosaic", @"Perlin Noise", @"Kuwahara", @"Glass Sphere", @"Stretch Distortion", @"Pinch Distortion", @"Bulge Filter", @"Burn Blend Filter", @"Saturation", @"Color Blend", @"Color Burn Blend", @"Hard Light Blend" ];
-=======
-    array = @[@"Swipe To Add Filter",@"Sepia",@"Vignette",@"Emboss",@"Grayscale", @"Blur", @"Cartoon", @"Sketch", @"Swirl"   ];
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
     i = 0;
     
     // Format navigationBar
@@ -107,7 +99,6 @@
     }
 }
 
-<<<<<<< HEAD
 #pragma mark - Filter Methods
 
 -(void)getFilterAtIndex:(NSInteger)n
@@ -119,106 +110,45 @@
         // Do nothing
     } else if (n == 1) {
         // Set up GPUImage
-=======
-#pragma mark - Swipe Recognizer Methods
-
--(void)swipeRight:(UISwipeGestureRecognizer *)recognizer
-{
-    if (i == array.count -1) {
-        i = 0;
-    } else {
-        i+=1;
-    }
-
-    if (i == 0) {
-        resultingImage = _image;
-        [imageView setImage:_image];
-    } else if (i == 1) {
-        // Set up GPUImage
-        stillImageSource = [[GPUImagePicture alloc] initWithImage:_image];
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
         GPUImageSepiaFilter *sepiaFilter = [[GPUImageSepiaFilter alloc] init];
         [stillImageSource addTarget:sepiaFilter];
         [stillImageSource processImage];
         resultingImage = [sepiaFilter imageFromCurrentlyProcessedOutput];
-<<<<<<< HEAD
     } else if (n == 2) {
-=======
-        [imageView setImage:resultingImage];
-    } else if (i == 2) {
-        stillImageSource = [[GPUImagePicture alloc] initWithImage:_image];
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
         GPUImageVignetteFilter *vignetteFilter = [[GPUImageVignetteFilter alloc] init];
         [stillImageSource addTarget:vignetteFilter];
         [stillImageSource processImage];
         resultingImage = [vignetteFilter imageFromCurrentlyProcessedOutput];
-<<<<<<< HEAD
     } else if (n == 3) {
-=======
-        [imageView setImage:resultingImage];
-    } else if (i == 3) {
-        stillImageSource = [[GPUImagePicture alloc] initWithImage:_image];
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
         GPUImageEmbossFilter *embossFilter = [[GPUImageEmbossFilter alloc] init];
         [stillImageSource addTarget:embossFilter];
         [stillImageSource processImage];
         resultingImage = [embossFilter imageFromCurrentlyProcessedOutput];
-<<<<<<< HEAD
     } else if (n == 4) {
-=======
-        [imageView setImage:resultingImage];
-    } else if (i == 4) {
-        stillImageSource = [[GPUImagePicture alloc] initWithImage:_image];
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
         GPUImageGrayscaleFilter *grayscaleFilter = [[GPUImageGrayscaleFilter alloc] init];
         [stillImageSource addTarget:grayscaleFilter];
         [stillImageSource processImage];
         resultingImage = [grayscaleFilter imageFromCurrentlyProcessedOutput];
-<<<<<<< HEAD
     } else if (n == 5) {
-=======
-        [imageView setImage:resultingImage];
-    } else if (i == 5) {
-        stillImageSource = [[GPUImagePicture alloc] initWithImage:_image];
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
         GPUImageGaussianBlurFilter *blurFilter = [[GPUImageGaussianBlurFilter alloc] init];
         [stillImageSource addTarget:blurFilter];
         [stillImageSource processImage];
         resultingImage = [blurFilter imageFromCurrentlyProcessedOutput];
-<<<<<<< HEAD
     } else if (n == 6) {
-=======
-        [imageView setImage:resultingImage];
-    } else if (i == 6) {
-        stillImageSource = [[GPUImagePicture alloc] initWithImage:_image];
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
         GPUImageToonFilter *toonFilter = [[GPUImageToonFilter alloc] init];
         [stillImageSource addTarget:toonFilter];
         [stillImageSource processImage];
         resultingImage = [toonFilter imageFromCurrentlyProcessedOutput];
-<<<<<<< HEAD
     } else if (n == 7) {
-=======
-        [imageView setImage:resultingImage];
-    } else if (i == 7) {
-        stillImageSource = [[GPUImagePicture alloc] initWithImage:_image];
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
         GPUImageSketchFilter *sketchFilter = [[GPUImageSketchFilter alloc] init];
         [stillImageSource addTarget:sketchFilter];
         [stillImageSource processImage];
         resultingImage = [sketchFilter imageFromCurrentlyProcessedOutput];
-<<<<<<< HEAD
     } else if (n == 8) {
-=======
-        [imageView setImage:resultingImage];
-    } else if (i == 8) {
-        stillImageSource = [[GPUImagePicture alloc] initWithImage:_image];
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
         GPUImageSwirlFilter *swirlFilter = [[GPUImageSwirlFilter alloc] init];
         [stillImageSource addTarget:swirlFilter];
         [stillImageSource processImage];
         resultingImage = [swirlFilter imageFromCurrentlyProcessedOutput];
-<<<<<<< HEAD
     } else if (n == 9) {
         GPUImageSmoothToonFilter *smoothToon = [[GPUImageSmoothToonFilter alloc] init];
         [stillImageSource addTarget:smoothToon];
@@ -345,11 +275,6 @@
     }
 
     [self getFilterAtIndex:i];
-=======
-        [imageView setImage:resultingImage];
-    }
-    navigationBar.topItem.title = array[i];
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
 }
 
 -(void)swipeLeft:(UIGestureRecognizer *)recognizer
@@ -359,72 +284,7 @@
     } else {
         i-=1;
     }
-<<<<<<< HEAD
     [self getFilterAtIndex:i]; 
-=======
-    if (i == 0) {
-        resultingImage = _image;
-        [imageView setImage:_image];
-    } else if (i == 1) {
-        // Set up GPUImage
-        stillImageSource = [[GPUImagePicture alloc] initWithImage:_image];
-        GPUImageSepiaFilter *sepiaFilter = [[GPUImageSepiaFilter alloc] init];
-        [stillImageSource addTarget:sepiaFilter];
-        [stillImageSource processImage];
-        resultingImage = [sepiaFilter imageFromCurrentlyProcessedOutput];
-        [imageView setImage:resultingImage];
-    } else if (i == 2) {
-        stillImageSource = [[GPUImagePicture alloc] initWithImage:_image];
-        GPUImageVignetteFilter *vignetteFilter = [[GPUImageVignetteFilter alloc] init];
-        [stillImageSource addTarget:vignetteFilter];
-        [stillImageSource processImage];
-        resultingImage = [vignetteFilter imageFromCurrentlyProcessedOutput];
-        [imageView setImage:resultingImage];
-    } else if (i == 3) {
-        stillImageSource = [[GPUImagePicture alloc] initWithImage:_image];
-        GPUImageEmbossFilter *embossFilter = [[GPUImageEmbossFilter alloc] init];
-        [stillImageSource addTarget:embossFilter];
-        [stillImageSource processImage];
-        resultingImage = [embossFilter imageFromCurrentlyProcessedOutput];
-        [imageView setImage:resultingImage];
-    } else if (i == 4) {
-        stillImageSource = [[GPUImagePicture alloc] initWithImage:_image];
-        GPUImageGrayscaleFilter *grayscaleFilter = [[GPUImageGrayscaleFilter alloc] init];
-        [stillImageSource addTarget:grayscaleFilter];
-        [stillImageSource processImage];
-        resultingImage = [grayscaleFilter imageFromCurrentlyProcessedOutput];
-        [imageView setImage:resultingImage];
-    } else if (i == 5) {
-        stillImageSource = [[GPUImagePicture alloc] initWithImage:_image];
-        GPUImageGaussianBlurFilter *blurFilter = [[GPUImageGaussianBlurFilter alloc] init];
-        [stillImageSource addTarget:blurFilter];
-        [stillImageSource processImage];
-        resultingImage = [blurFilter imageFromCurrentlyProcessedOutput];
-        [imageView setImage:resultingImage];
-    } else if (i == 6) {
-        stillImageSource = [[GPUImagePicture alloc] initWithImage:_image];
-        GPUImageToonFilter *toonFilter = [[GPUImageToonFilter alloc] init];
-        [stillImageSource addTarget:toonFilter];
-        [stillImageSource processImage];
-        resultingImage = [toonFilter imageFromCurrentlyProcessedOutput];
-        [imageView setImage:resultingImage];
-    } else if (i == 7) {
-        stillImageSource = [[GPUImagePicture alloc] initWithImage:_image];
-        GPUImageSketchFilter *sketchFilter = [[GPUImageSketchFilter alloc] init];
-        [stillImageSource addTarget:sketchFilter];
-        [stillImageSource processImage];
-        resultingImage = [sketchFilter imageFromCurrentlyProcessedOutput];
-        [imageView setImage:resultingImage];
-    } else if (i == 8) {
-        stillImageSource = [[GPUImagePicture alloc] initWithImage:_image];
-        GPUImageSwirlFilter *swirlFilter = [[GPUImageSwirlFilter alloc] init];
-        [stillImageSource addTarget:swirlFilter];
-        [stillImageSource processImage];
-        resultingImage = [swirlFilter imageFromCurrentlyProcessedOutput];
-        [imageView setImage:resultingImage];
-    }
-    navigationBar.topItem.title = array[i];
->>>>>>> c1211f40aa532bed86377eb5fccc6bd439429351
 }
 
 #pragma mark - Action Sheet Delegate
