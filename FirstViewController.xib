@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment version="1536" defaultVersion="1792" identifier="iOS"/>
+        <deployment version="1536" defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
@@ -36,11 +36,11 @@
                         </barButtonItem>
                     </items>
                 </toolbar>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUn-s1-Yp2">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUn-s1-Yp2">
                     <rect key="frame" x="20" y="130" width="280" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="70" id="Q1u-wY-Ryh"/>
+                        <constraint firstAttribute="height" constant="70" id="g93-vs-AFM"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -49,11 +49,13 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="lUn-s1-Yp2" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="Rg2-1R-hnD"/>
-                <constraint firstItem="rnv-kE-Rmn" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="awY-G8-RDL"/>
-                <constraint firstAttribute="trailing" secondItem="lUn-s1-Yp2" secondAttribute="trailing" constant="20" id="jTv-9y-ksB"/>
-                <constraint firstAttribute="trailing" secondItem="rnv-kE-Rmn" secondAttribute="trailing" id="miv-Vt-Q9R"/>
-                <constraint firstAttribute="bottom" secondItem="rnv-kE-Rmn" secondAttribute="bottom" id="vvH-gY-C3O"/>
+                <constraint firstItem="rnv-kE-Rmn" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="6gO-F6-mTn"/>
+                <constraint firstItem="lUn-s1-Yp2" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="8yI-O1-Xm9"/>
+                <constraint firstAttribute="trailing" secondItem="rnv-kE-Rmn" secondAttribute="trailing" id="JI5-Dd-l6T"/>
+                <constraint firstItem="lUn-s1-Yp2" firstAttribute="top" secondItem="1" secondAttribute="top" constant="130" id="bzT-jG-dCk"/>
+                <constraint firstAttribute="trailing" secondItem="lUn-s1-Yp2" secondAttribute="trailing" constant="20" id="l0l-ww-upD"/>
+                <constraint firstAttribute="bottom" secondItem="rnv-kE-Rmn" secondAttribute="bottom" id="lWm-gT-0u7"/>
+                <constraint firstAttribute="bottom" secondItem="lUn-s1-Yp2" secondAttribute="bottom" constant="368" id="nLS-Tc-uYS"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

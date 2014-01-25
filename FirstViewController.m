@@ -16,6 +16,7 @@
 @interface FirstViewController () <EAIntroDelegate> {
     CGFloat screenWidth;
     CGRect imageViewRect;
+    CGFloat systemVersion;
 }
 @end
 
@@ -30,12 +31,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    systemVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
     screenWidth = [[UIScreen mainScreen] bounds].size.width;
     imageViewRect = CGRectMake(0, 0, screenWidth, screenWidth);
 
     [self configureNavBar];
     [self configureToolbar];
-    [self setNeedsStatusBarAppearanceUpdate];
     [self configureTextLabel];
     [self configureImageView];
     [self configureClearButton];
@@ -47,6 +48,9 @@
     
     // CameraButtonItem
     [self.cameraButton setAction:@selector(showActionSheet:)];
+    
+    // iOS 7
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -68,13 +72,14 @@
     [button addTarget:self action:@selector(showActionSheet:) forControlEvents:UIControlEventTouchUpInside];
     [button setTitle:@"" forState:UIControlStateNormal];
     [button setFrame:imageViewRect];
+    [button setTintColor:[UIColor whiteColor]];
+    
     [self.view addSubview:button];
     
     // Add Swipe Recognizer
     UISwipeGestureRecognizer *swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRecognized:)];
     [swipeRecognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
     [button addGestureRecognizer:swipeRecognizer];
-    
 }
 
 -(void)configureImageView
@@ -99,7 +104,12 @@
                                                                    action:@selector(clearImage:)];
     
     [self.navigationItem setRightBarButtonItem:clearButton];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    if (systemVersion >= 7) {
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    } else {
+        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:74 / 255 green:72 / 255 blue:78 / 255 alpha:0.75];
+        self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
+    }
 }
 
 -(void)configureSlider
@@ -141,8 +151,10 @@
 -(void)configureToolbar
 {
     _toolbar.tintColor = [UIColor whiteColor];
-    self.navigationController.toolbar.barTintColor = [UIColor colorWithRed:74 / 255 green:72 / 255 blue:78 / 255 alpha:0.9];
-    _toolbar.barTintColor = [UIColor colorWithRed:74 / 255 green:72 / 255 blue:78 / 255 alpha:0.75];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        self.navigationController.toolbar.barTintColor = [UIColor colorWithRed:74 / 255 green:72 / 255 blue:78 / 255 alpha:0.9];
+        _toolbar.barTintColor = [UIColor colorWithRed:74 / 255 green:72 / 255 blue:78 / 255 alpha:0.75];
+    }
 }
 
 #pragma mark - System Methods
@@ -310,7 +322,7 @@
         
         EAIntroPage *page6 = [EAIntroPage page];
         page6.title = NSLocalizedString(@"This one looks cool...", nil);
-        page6.desc = NSLocalizedString(@"Tap the share button in the top right.", nil);
+        page6.desc = NSLocalizedString(@"Tap the share buton on the top right.", nil);
         if ([UIScreen mainScreen].bounds.size.height < 568.0) {
             page6.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro6.png"] convertToSize:CGSizeMake(176, 312)];
         } else {

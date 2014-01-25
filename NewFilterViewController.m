@@ -59,7 +59,7 @@
 
 -(void)configureNavBar
 {
-    self.navigationItem.title = @"Add Filter";
+    self.navigationItem.title = NSLocalizedString(@"Add Filter", nil);
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"x-circle.png"]
                                                                    style:UIBarButtonItemStylePlain
                                                                   target:self
@@ -90,7 +90,7 @@
     [clearView addSubview:transparentView];
     
     imageView = [[UIImageView alloc] initWithImage:image];
-    CGFloat y = self.view.frame.size.height / 2 - 160.0;
+    CGFloat y = screenHeight / 2 - screenWidth / 2;
     // NSLog(@"%f", y);
     imageView.frame = CGRectMake(0, y, screenWidth, screenWidth);
     imageView.backgroundColor = [UIColor whiteColor];

@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   Ghostile
 
@@ -9,7 +9,7 @@
 
 "Background" = "El Fondo";
 
-"Foreground" = "Primer Plano"
+"Foreground" = "Primer Plano";
 
 "Tap For Background Pic" = "Toque";
 
@@ -27,11 +27,11 @@
 
 "Rate Ghostile" = "Calificar a Ghostile";
 
-"Having trouble? We'll walk you through the tutorial on how to use Ghostile" = "¿Tiene problemas? Te guiaremos a través del tutorial sobre cómo utilizar Ghostile.";
+"Having trouble? We'll walk you through the tutorial on how to use Ghostile." = "¿Tiene problemas? Te guiaremos a través del tutorial sobre cómo utilizar Ghostile.";
 
-"If you have questions or feedback, please contact support" = "Si usted tiene preguntas o comentarios, por favor póngase en contacto con apoyo.";
+"If you have questions or feedback, please contact support." = "Si usted tiene preguntas o comentarios, por favor póngase en contacto con apoyo.";
 
-"Connect with us and see incredible Ghostile photos from users across the world." = "Connect with us and see incredible Ghostile photos from users across the world.";
+"Connect with us and see incredible Ghostile photos from users across the world." = "Conecte con nosotros y ver increíbles Ghostile fotos de los usuarios en todo el mundo.";
 
 "Please take a moment to rate Ghostile on the App Store." = "Por favor tome un momento para valorar Ghostile en la App Store.";
 
@@ -71,11 +71,11 @@
 
 "This one looks cool..." = "Éste se ve bien ...";
 
-"Tap the share buton in the top right." = "Toque en el buton participación en la parte superior derecha.";
+"Tap the share buton on the top right." = "Toque en el buton participación en la parte superior derecha.";
 
 "Share your picture!" = "Comparte tus fotos!";
 
-"Facebook, Twitter, Instagram. Or just keep it for yourself" = "Facebook, Twitter, Instagram. O simplemente mantener por sí mismo";
+"Facebook, Twitter, Instagram. Or just keep it for yourself." = "Facebook, Twitter, Instagram. O simplemente mantener por sí mismo";
 
 "Skip" = "Omitir";
 

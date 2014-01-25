@@ -229,7 +229,7 @@
     
     EAIntroPage *page6 = [EAIntroPage page];
     page6.title = NSLocalizedString(@"This one looks cool...", nil);
-    page6.desc = NSLocalizedString(@"Tap the share button in the top right.", nil);
+    page6.desc = NSLocalizedString(@"Tap the share buton on the top right.", nil);
     if ([UIScreen mainScreen].bounds.size.height < 568.0) {
         page6.titleImage = [self imageWithImage:[UIImage imageNamed:@"intro6.png"] convertToSize:CGSizeMake(176, 312)];
     } else {
